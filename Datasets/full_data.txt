@@ -1,0 +1,799 @@
+1. Input: "Customer's 1 Input: 그린티 라떼 한 잔 주세요."
+Output: "그린티 라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly recognized the request for a green tea latte. Applied default settings: medium size, hot.
+Input Action: Order
+Output Action: Successfully Order
+Metric: TP
+Reason: Correctly processed the order for a green tea latte without any issues.
+
+2. Input: "Customer's 1 Input: 오렌지 주스 미디엄 사이즈로 하나 주세요."
+Output: "오렌지 주스 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다."
+Comparison: Incorrectly assigned a hot temperature; juice should typically be cold.
+Input Action: Order
+Output Action: Incorrect Order
+Metric: FN
+Reason: The system failed to recognize that orange juice should be served cold, leading to an incorrect temperature setting.
+
+3. Input: "Customer's 1 Input: 딸기 스무디 하나 주문할게요."
+Output: "딸기 스무디 (미디움, 핫, 없음) 1잔 주문이 완료되었습니다."
+Comparison: Incorrectly assigned a hot temperature for a smoothie.
+Input Action: Order
+Output Action: Incorrect Order
+Metric: FN
+Reason: The system did not recognize that smoothies are served cold, resulting in an incorrect temperature.
+
+4. Input: "Customer's 1 Input: 아메리카노 다섯 잔 주세요."
+Output: "아메리카노 (미디움, 핫, 없음) 다섯 잔 주문이 완료되었습니다."
+Comparison: Correctly processed the order for five Americanos. Applied default settings.
+Input Action: Order
+Output Action: Successfully Order
+Metric: TP
+Reason: Successfully handled the request for five Americanos using default settings.
+
+5. Input: "Customer's 1 Input: 카푸치노 두 잔에 하나는 뜨겁게, 다른 하나는 아이스로 주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 1 잔, 카푸치노 (미디움, 아이스, 없음) 1 잔 주문이 완료되었습니다."
+Comparison: Correctly differentiated between hot and iced options.
+Input Action: Order
+Output Action: Successfully Order
+Metric: TP
+Reason: Accurately processed the order with both temperature preferences.
+
+6. Input: "Customer’s 1 Input: 아메리카노 두 잔 주세요. Customer's 2 Input: 아메리카노 두 잔 말고 라떼로 바꿔주세요."
+Output: "아메리카노 0 잔, 라떼 2 잔 주문이 완료되었습니다."
+Comparison: Correctly handled the modification request to change the order to lattes.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: Successfully processed the change request from Americanos to lattes.
+
+7. Input: "Customer’s 1 Input: 아이스 카라멜 마끼아또 한잔 주세요. Customer's 2 Input: 아이스 카라멜 마끼아또 한잔을 핫으로 바꿔주세요."
+Output: "카라멜 마끼아또 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Ignored the request to change to hot.
+Input Action: Change
+Output Action: Incorrect Change
+Metric: FN
+Reason: The system failed to apply the temperature change request from iced to hot.
+
+8. Input: "Customer’s 1 Input: 라지 사이즈로 주세요. Customer's 2 Input: 라지 사이즈 대신 미디움 사이즈로 바꿔주세요."
+Output: "라떼 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다."
+Comparison: Correctly applied the size change from large to medium.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: Properly handled the request to change the size from large to medium.
+
+9. Input: "Customer’s 1 Input: 아이스 아메리카노 세잔 주세요. Customer's 2 Input: 아이스 아메리카노 세잔 대신 카푸치노 두잔으로 바꿔주세요."
+Output: "아이스 아메리카노 세 잔, 카푸치노 두 잔 주문이 완료되었습니다."
+Comparison: Incorrectly confirmed both initial and modified orders, leading to duplication.
+Input Action: Change
+Output Action: Incorrect Change
+Metric: FP
+Reason: The system failed by processing both the original and modified orders, causing duplication.
+
+10. Input: "Customer’s 1 Input: 아이스 카페라떼 한잔 주세요. Customer's 2 Input: 아이스 카페라떼 말고 아이스 초콜릿 라떼로 바꿔주세요."
+Output: "카페라떼 (미디움, 아이스, 없음) 한 잔, 초콜릿 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Incorrectly included both the original and modified orders.
+Input Action: Change
+Output Action: Incorrect Change
+Metric: FP
+Reason: The system incorrectly processed both the initial and modified orders, resulting in duplication.
+
+11. Input: "Customer’s 1 Input: 아이스 바닐라 라떼 한 잔 주세요. Customer's 2 Input: 아이스 바닐라 라떼 말고 따뜻하게 해주세요."
+Output: "바닐라 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Did not change the temperature to hot as requested.
+Input Action: Change
+Output Action: Incorrect Change
+Metric: FN
+Reason: The system failed to apply the requested temperature change from iced to hot.
+
+12. Input: "Customer’s 1 Input: 에스프레소 더블샷 두 잔 주세요. Customer's 2 Input: 한 잔에 카라멜 시럽 추가해주세요."
+Output: "에스프레소 (미디움, 핫, 카라멜 시럽) 한 잔, 에스프레소 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added caramel syrup to one of the espressos.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: Successfully handled the customization request by adding caramel syrup to one espresso.
+
+13. Input: "Customer’s 1 Input: 카푸치노 네 잔 주세요. Customer's 2 Input: 한 잔에 시나몬 파우더 추가해주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 세 잔, 카푸치노 (미디움, 핫, 시나몬 파우더) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added cinnamon powder to one of the cappuccinos.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately processed the request to add cinnamon powder to one of the four cappuccinos.
+
+14. Input: "Customer’s 1 Input: 핫초코 두 잔과 아메리카노 두 잔 주세요. Customer's 2 Input: 아메리카노 두 잔 중 하나를 라떼로 바꿔주세요."
+Output: "핫초코 두 잔, 아메리카노 한 잔, 라떼 한 잔 주문이 완료되었습니다."
+Comparison: Correctly changed one Americano to a latte.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: Properly handled the modification request, changing one of the Americanos to a latte.
+
+15. Input: "Customer’s 1 Input: 콜드브루 두 잔 주세요. Customer's 2 Input: 한 잔에 샷 추가해주세요."
+Output: "콜드브루 (미디움, 아이스, 없음) 한 잔, 콜드브루 (미디움, 아이스, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added an extra shot to one of the cold brews.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately processed the request to add an extra shot to one of the two cold brews.
+
+16. Input: "Customer’s 1 Input: 에스프레소 한 잔 주세요. Customer's 2 Input: 샷 하나 더 추가해주세요."
+Output: "에스프레소 (미디움, 핫, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added an extra shot to the espresso.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: Properly handled the request to add an extra shot to the espresso order.
+
+17. Input: "Customer’s 1 Input: 딸기 스무디 두 잔 주세요. Customer's 2 Input: 두 잔 중 한 잔을 따뜻하게 바꿔주세요."
+Output: "딸기 스무디 (미디움, 핫, 없음) 한 잔, 딸기 스무디 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly changed the temperature of one smoothie to hot.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system accurately processed the temperature change request for one of the smoothies.
+
+18. Input: "Customer’s 1 Input: 아메리카노 네 잔 주세요. Customer's 2 Input: 한 잔에 휘핑크림 추가해주세요."
+Output: "아메리카노 (미디움, 핫, 없음) 세 잔, 아메리카노 (미디움, 핫, 휘핑크림) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added whipped cream to one Americano.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system successfully applied the whipped cream customization to one of the Americanos.
+
+19. Input: "Customer’s 1 Input: 바닐라 라떼 두 잔 주세요. Customer's 2 Input: 한 잔에 초콜릿 시럽 추가해주세요."
+Output: "바닐라 라떼 (미디움, 핫, 없음) 한 잔, 바닐라 라떼 (미디움, 핫, 초콜릿 시럽) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added chocolate syrup to one vanilla latte.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: Successfully handled the request for adding chocolate syrup to one of the lattes.
+
+20. Input: "Customer’s 1 Input: 아이스 아메리카노 한 잔과 핫 아메리카노 한 잔 주세요. Customer's 2 Input: 핫 아메리카노에 샷 추가해주세요."
+Output: "아이스 아메리카노 (미디움, 아이스, 없음) 한 잔, 아메리카노 (미디움, 핫, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added an extra shot to the hot Americano.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: Properly handled the request to customize the hot Americano with an extra shot.
+
+21. Input: "Customer’s 1 Input: 에스프레소 더블샷 두 잔 주세요. Customer's 2 Input: 한 잔은 따뜻하게, 한 잔은 아이스로 해주세요."
+Output: "에스프레소 더블샷 (미디움, 핫, 없음) 한 잔, 에스프레소 더블샷 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly processed both temperature changes as requested.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system accurately differentiated the temperature preferences for each espresso.
+
+22. Input: "Customer’s 1 Input: 아메리카노 네 잔 주세요. Customer's 2 Input: 두 잔에 바닐라 시럽 넣어주세요."
+Output: "아메리카노 (미디움, 핫, 없음) 두 잔, 아메리카노 (미디움, 핫, 바닐라 시럽) 두 잔 주문이 완료되었습니다."
+Comparison: Correctly added vanilla syrup to two of the drinks.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The request for vanilla syrup customization was handled correctly for two out of four drinks.
+
+23. Input: "Customer’s 1 Input: 핫초코 한 잔 주세요. Customer's 2 Input: 휘핑크림 추가해주세요."
+Output: "핫초코 (미디움, 핫, 휘핑크림) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added whipped cream to the hot chocolate.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system successfully applied the request for whipped cream.
+
+24. Input: "Customer’s 1 Input: 라떼 세 잔 주세요. Customer's 2 Input: 한 잔은 샷 추가해주세요."
+Output: "라떼 (미디움, 핫, 없음) 두 잔, 라떼 (미디움, 핫, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully added an extra shot to one of the lattes.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: Properly handled the extra shot request for one latte.
+
+25. Input: "Customer’s 1 Input: 콜드브루 네 잔 주세요. Customer's 2 Input: 한 잔에 휘핑크림 추가하고 샷도 추가해주세요."
+Output: "콜드브루 (미디움, 아이스, 없음) 세 잔, 콜드브루 (미디움, 아이스, 휘핑크림, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly handled both the whipped cream and extra shot additions.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system effectively managed multiple customizations for one drink.
+
+26. Input: "Customer’s 1 Input: 카라멜 마끼아또 세 잔 주세요. Customer's 2 Input: 한 잔에 시나몬 파우더 추가해주세요."
+Output: "카라멜 마끼아또 (미디움, 핫, 없음) 두 잔, 카라멜 마끼아또 (미디움, 핫, 시나몬 파우더) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added cinnamon powder to one of the drinks.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The request for cinnamon powder customization was applied accurately.
+
+27. Input: "Customer’s 1 Input: 아이스 라떼 네 잔 주세요. Customer's 2 Input: 두 잔을 따뜻하게 바꿔주세요."
+Output: "라떼 (미디움, 아이스, 없음) 두 잔, 라떼 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다."
+Comparison: Successfully changed the temperature for two drinks.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The temperature change request for half of the order was handled correctly.
+
+28. Input: "Customer’s 1 Input: 에스프레소 세 잔 주세요. Customer's 2 Input: 한 잔에 샷 빼주세요."
+Output: "에스프레소 (미디움, 핫, 없음) 두 잔, 에스프레소 (미디움, 핫, 샷 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly handled the request to remove the extra shot from one drink.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: Properly processed the customization request to exclude the extra shot from one espresso.
+
+29. Input: "Customer’s 1 Input: 카푸치노 네 잔 주세요. Customer's 2 Input: 두 잔에 시나몬 파우더 뿌려주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 두 잔, 카푸치노 (미디움, 핫, 시나몬 파우더) 두 잔 주문이 완료되었습니다."
+Comparison: Correctly applied cinnamon powder to two drinks.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system successfully fulfilled the request for additional customization on two cappuccinos.
+
+30. Input: "Customer’s 1 Input: 딸기 스무디 네 잔 주세요. Customer's 2 Input: 한 잔에 초콜릿 시럽 넣어주세요."
+Output: "딸기 스무디 (미디움, 핫, 없음) 세 잔, 딸기 스무디 (미디움, 핫, 초콜릿 시럽) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly added chocolate syrup to one drink.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The request for chocolate syrup was accurately processed for one smoothie.
+
+31. Input: "Customer's 1 Input: 그린티 라떼 한 잔 주세요."
+Output: "그린티 라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly recognized the request for a green tea latte. Applied default settings: medium size, hot.
+Input Action: Order
+Output Action: Successfully Order
+Metric: TP
+Reason: The order was accurately processed with default settings without any errors.
+
+32. Input: "Customer's 1 Input: 오렌지 주스 미디엄 사이즈로 하나 주세요."
+Output: "오렌지 주스 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Detected the request for a medium-sized orange juice but incorrectly assigned a hot temperature.
+Input Action: Order
+Output Action: Partially Order (Incorrect Temperature)
+Metric: FN
+Reason: The system failed to recognize that orange juice should not be hot, resulting in an incorrect order.
+
+33. Input: "Customer's 1 Input: 딸기 스무디 하나 주문할게요."
+Output: "딸기 스무디 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Recognized the order but incorrectly assigned a hot temperature for a smoothie.
+Input Action: Order
+Output Action: Partially Order (Incorrect Temperature)
+Metric: FN
+Reason: The system assigned an incorrect temperature, which is not appropriate for a smoothie.
+
+34. Input: "Customer's 1 Input: 아메리카노 다섯 잔 주세요."
+Output: "아메리카노 (미디움, 핫, 없음) 다섯 잔 주문이 완료되었습니다."
+Comparison: Correctly processed the order for five Americanos with default settings.
+Input Action: Order
+Output Action: Successfully Order
+Metric: TP
+Reason: The system handled the bulk order correctly, applying the default settings as expected.
+
+35. Input: "Customer's 1 Input: 카푸치노 두 잔에 하나는 뜨겁게, 다른 하나는 아이스로 주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 한 잔, 카푸치노 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly differentiated between hot and iced options for two cappuccinos.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The temperature preferences for each cappuccino were accurately processed.
+
+36. Input: "Customer’s 1 Input: 아메리카노 두 잔 주세요. Customer's 2 Input: 아메리카노 두 잔 말고 라떼로 바꿔주세요."
+Output: "라떼 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다."
+Comparison: Correctly handled the modification request to change both Americanos to lattes.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system effectively changed the order as per the customer’s request.
+
+37. Input: "Customer’s 1 Input: 아이스 카라멜 마끼아또 한잔 주세요. Customer's 2 Input: 아이스 카라멜 마끼아또 한잔을 핫으로 바꿔주세요."
+Output: "카라멜 마끼아또 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully applied the temperature change request.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The temperature change request was handled correctly, resulting in a hot caramel macchiato.
+
+38. Input: "Customer’s 1 Input: 라지 사이즈로 주세요. Customer's 2 Input: 라지 사이즈 대신 미디움 사이즈로 바꿔주세요."
+Output: "라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly applied the size change request.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system accurately adjusted the drink size based on the customer's follow-up request.
+
+39. Input: "Customer’s 1 Input: 아이스 아메리카노 세잔 주세요. Customer's 2 Input: 아이스 아메리카노 세잔 대신 카푸치노 두잔으로 바꿔주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다."
+Comparison: Handled the modification request correctly, changing the order to two cappuccinos.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The change request was executed as instructed, replacing the initial order entirely.
+
+40. Input: "Customer’s 1 Input: 아이스 카페라떼 한잔 주세요. Customer's 2 Input: 아이스 카페라떼 말고 아이스 초콜릿 라떼로 바꿔주세요."
+Output: "초콜릿 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly handled the request to change the drink type.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The drink type was successfully updated from iced cafe latte to iced chocolate latte.
+
+41. Input: "Customer’s 1 Input: 아이스 바닐라 라떼 한잔 주세요. Customer's 2 Input: 아이스 바닐라 라떼를 따뜻한 카페라떼로 바꿔주세요."
+Output: "카페라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly applied the change request to switch from an iced vanilla latte to a hot cafe latte.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system accurately processed the drink type and temperature change.
+
+42. Input: "Customer's 1 Input: 핫 바닐라 라떼 한잔을 아이스 바닐라 라떼로 바꿔주시고, 샷 하나 추가해 주세요."
+Output: "바닐라 라떼 (미디움, 아이스, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly handled both the temperature change and the extra shot request.
+Input Action: Change, Option Add
+Output Action: Successfully Change and Option Add
+Metric: TP
+Reason: Both customizations (temperature change and extra shot) were processed correctly.
+
+43. Input: "Customer’s 1 Input: 라지 카푸치노 두잔을 미디움 사이즈로 바꿔주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다."
+Comparison: Successfully applied the size change from large to medium for both drinks.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system correctly adjusted the drink size as requested.
+
+44. Input: "Customer’s 1 Input: 아메리카노 라지 두잔 중 한 잔을 라떼로 변경해주세요."
+Output: "아메리카노 (라지, 핫, 없음) 한 잔, 라떼 (라지, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly identified the request to change one Americano to a latte.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The change request was executed correctly, resulting in one Americano and one latte.
+
+45. Input: "Customer’s 1 Input: 아이스 카페라떼에서 샷 추가한 걸 뺀 라떼로 바꿔주세요."
+Output: "라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request to remove the extra shot from the iced cafe latte.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system accurately processed the removal of the extra shot.
+
+46. Input: "Customer’s 1 Input: 휘핑크림을 뺀 카라멜마끼아또로 바꿔주세요."
+Output: "카라멜마끼아또 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly processed the request to exclude whipped cream from the caramel macchiato.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The exclusion of whipped cream was handled correctly.
+
+47. Input: "Customer’s 1 Input: 아이스 키페라떼 대신 바닐라 라떼로 바꿔주시고, 엑스라지로 해주세요."
+Output: "바닐라 라떼 (엑스라지, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly handled the drink change and applied the extra-large size request.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: Both the drink change and size request were fulfilled accurately.
+
+48. Input: "Customer’s 1 Input: 아메리카노 두 잔 주세요. Customer's 2 Input: 아메리카노 두 잔 말고 카푸치노로 바꿔주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다."
+Comparison: Successfully changed both Americanos to cappuccinos as requested.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system executed the change request effectively, replacing both drinks.
+
+49. Input: "Customer’s 1 Input: 아이스 카페라떼 한잔 주세요. Customer's 2 Input: 아이스 카페라떼 말고 아이스 초콜릿 라떼로 바꿔주세요."
+Output: "초콜릿 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly identified the request to change the drink type.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The drink type was successfully updated from iced cafe latte to iced chocolate latte.
+
+50. Input: "Customer’s 1 Input: 아이스 바닐라 라떼 하나 빼주세요."
+Output: "바닐라 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request to remove one iced vanilla latte from the order.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The removal request was executed correctly, leaving the final order as expected.
+
+51. Input: "Customer’s 1 Input: 아이스 아메리카노 두 잔 주세요. Customer's 2 Input: 아이스 아메리카노 한 잔 빼주세요."
+Output: "아메리카노 (미디움, 아이스, 없음) 두 잔 주문이 완료되었습니다."
+Comparison: Did not handle the request to remove one iced Americano, resulting in an incorrect order.
+Input Action: Remove
+Output Action: Failed to Remove
+Metric: FN
+Reason: The system failed to process the removal request, leaving both drinks in the order.
+
+52. Input: "Customer’s 1 Input: 에스프레소 한 잔 주세요. Customer's 2 Input: 에스프레소 취소해주세요."
+Output: "에스프레소 한 잔 취소되었습니다. 최종 주문 상태: 아무 주문이 없습니다."
+Comparison: Correctly handled the cancellation request, leaving no orders remaining.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system accurately processed the cancellation, resulting in no remaining orders.
+
+53. Input: "Customer’s 1 Input: 카푸치노 네 잔 주세요. Customer's 2 Input: 카푸치노 세 잔을 빼주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다."
+Comparison: Properly processed the request to remove three out of four cappuccinos.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The removal request was handled correctly, leaving one cappuccino.
+
+54. Input: "Customer’s 1 Input: 핫초코 하나, 아이스 아메리카노 네 잔, 카라멜 마끼아또 한 잔 주세요. Customer's 2 Input: 카라멜 마끼아또 한 잔을 취소할게요."
+Output: "핫초코, 아이스 아메리카노 네 잔 주문이 완료되었습니다. 카라멜 마끼아또는 취소되었습니다."
+Comparison: Correctly handled the initial order and the follow-up cancellation request.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system accurately processed the cancellation of the caramel macchiato.
+
+55. Input: "Customer’s 1 Input: 핫초코 세 잔과 바닐라 라떼 두 잔 주세요. Customer's 2 Input: 바닐라 라떼 두 잔 중 한 잔만 취소해주세요."
+Output: "핫초코 세 잔, 바닐라 라떼 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the cancellation of one vanilla latte, leaving one remaining.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system correctly executed the partial cancellation request.
+
+56. Input: "Customer’s 1 Input: 에스프레소 더블샷 두 잔과 아이스 아메리카노 하나 주세요. Customer's 2 Input: 에스프레소 더블샷 한 잔을 빼주세요."
+Output: "에스프레소 더블샷 한 잔, 아이스 아메리카노 한 잔 주문이 완료되었습니다."
+Comparison: Correctly removed one of the double-shot espressos as requested.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The removal of one double-shot espresso was processed accurately.
+
+57. Input: "Customer’s 1 Input: 아이스 바닐라 라떼 세 잔 주세요. Customer's 2 Input: 아이스 바닐라 라떼 세 잔 중 두 잔을 취소해주세요."
+Output: "바닐라 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully processed the cancellation of two out of three vanilla lattes.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system handled the partial cancellation effectively.
+
+58. Input: "Customer’s 1 Input: 카푸치노 하나, 아메리카노 두 잔 주세요. Customer's 2 Input: 아메리카노 두 잔 중 하나만 빼주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 1 잔, 아메리카노 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다."
+Comparison: Correctly identified and processed the request to remove one Americano.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system correctly removed one of the two Americanos as requested.
+
+59. Input: "Customer’s 1 Input: 아이스 아메리카노 두 잔에 샷 추가해서 주세요. Customer's 2 Input: 아이스 아메리카노 두 잔에 샷 추가한 것 중 한 잔을 빼주세요."
+Output: "아이스 아메리카노 (미디움, 아이스, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request to remove one of the customized iced Americanos.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The removal of one customized drink was processed without errors.
+
+60. Input: "Customer's 1 Input: 카푸치노 한 잔과 라떼 한 잔 주세요. Customer's 2 Input: 카푸치노 한 잔 빼주세요."
+Output: "라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Properly processed the request to remove the cappuccino, leaving only the latte.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system executed the removal request correctly, leaving the latte as the only remaining order.
+
+61. Input: "Customer's 1 Input: 딸기 스무디 두 잔 주세요. Customer's 2 Input: 딸기 스무디 한 잔 빼주세요."
+Output: "딸기 스무디 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request to remove one smoothie, leaving one remaining.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system correctly processed the request to remove one smoothie.
+
+62. Input: "Customer's 1 Input: 그린티 한 잔과 핫 초코 한 잔 주세요. Customer's 2 Input: 핫 초코 한 잔 빼주세요."
+Output: "그린티 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly processed the request to cancel the hot chocolate, leaving only the green tea.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system accurately executed the request to remove the hot chocolate.
+
+63. Input: "Customer's 1 Input: 오렌지 주스 두 잔 주세요. Customer's 2 Input: 오렌지 주스 한 잔 빼주세요."
+Output: "오렌지 주스 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully handled the request to remove one of the two orange juice orders.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The removal request was processed correctly, leaving one juice.
+
+64. Input: "Customer's 1 Input: 치즈케이크 한 조각과 브라우니 한 조각 주세요. Customer's 2 Input: 치즈케이크 한 조각 빼주세요."
+Output: "죄송하지만, 카페에서는 음료만을 제공합니다. 다시 주문해 주세요."
+Comparison: Correctly identified the invalid request for food items and responded appropriately.
+Input Action: Remove
+Output Action: N/A (Invalid Request)
+Metric: TN
+Reason: The system correctly identified that food items are not available for order.
+
+65. Input: "Customer's 1 Input: 아이스 라떼 한 잔과 핫 초코 한 잔 주세요. Customer's 2 Input: 핫 초코 한 잔 빼주세요."
+Output: "아이스 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request to remove the hot chocolate, leaving only the iced latte.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The removal request was accurately processed, leaving only the iced latte.
+
+66. Input: "Customer's 1 Input: 망고 스무디 두 잔 주세요. Customer's 2 Input: 망고 스무디 한 잔 빼주세요."
+Output: "망고 스무디 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly processed the removal of one mango smoothie, leaving one remaining.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system accurately handled the request to remove one mango smoothie.
+
+67. Input: "Customer's 1 Input: 카라멜 마끼아또 한 잔과 아메리카노 한 잔 주세요. Customer's 2 Input: 카라멜 마끼아또 한 잔 빼주세요."
+Output: "아메리카노 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly handled the request to remove the caramel macchiato, leaving only the Americano.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TN
+Reason: The system processed the removal of the caramel macchiato accurately.
+
+68. Input: "Customer's 1 Input: 딸기 스무디 하나 빼주세요."
+Output: "딸기 스무디 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Ambiguously processed the request, assuming the item was already ordered. Could be improved for clarity.
+Input Action: Remove
+Output Action: Ambiguous (Assumed Existing Order)
+Metric: FP
+Reason: The system incorrectly assumed the smoothie was part of an existing order, leading to ambiguity.
+
+69. Input: "Customer's 1 Input: 아이스 카라멜 마끼아또 하나 빼주세요."
+Output: "카라멜 마끼아또 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Similar to the previous case, assumed the item was already ordered and completed it. Could handle ambiguity better.
+Input Action: Remove
+Output Action: Ambiguous (Assumed Existing Order)
+Metric: FP
+Reason: The system's assumption led to ambiguity and incorrect handling of the request.
+
+70. Input: "Customer's 1 Input: 아이스 카페라떼 두 잔에 샷 추가해주세요."
+Output: "카페라떼 (미디움, 아이스, 샷) 두 잔 주문이 완료되었습니다."
+Comparison: Properly processed the request for two iced lattes with an extra shot.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately handled the addition of extra shots to both drinks.
+
+71. Input: "Customer's 1 Input: 아메리카노 세 잔에 휘핑크림 넣어주세요."
+Output: "아메리카노 (미디움, 핫, 휘핑크림) 세 잔 주문이 완료되었습니다."
+Comparison: Correctly handled the request for additional whipped cream on all three drinks.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately processed the customization request.
+
+72. Input: "Customer’s 1 Input: 아이스 바닐라 라떼 한 잔 주세요. Customer's 2 Input: 아이스 바닐라 라떼 한 잔에 초콜릿 시럽 넣어주세요."
+Output: "바닐라 라떼 (미디움, 아이스, 초콜릿 시럽) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully added the chocolate syrup as requested.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system correctly processed the addition of chocolate syrup.
+
+73. Input: "Customer’s 1 Input: 카라멜 마끼아또 한 잔 주세요. Customer's 2 Input: 카라멜 마끼아또 한 잔에 휘핑크림과 시나몬 파우더 추가해주세요."
+Output: "카라멜 마끼아또 (미디움, 핫, 휘핑크림, 시나몬 파우더) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request for multiple customizations (whipped cream and cinnamon powder).
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system successfully applied both customization requests.
+
+74. Input: "Customer’s 1 Input: 아이스 카페라떼 한 잔 주세요. Customer's 2 Input: 아이스 카페라떼 한 잔에 바닐라 시럽 추가하고 휘핑크림도 올려주세요."
+Output: "카페라떼 (미디움, 아이스, 바닐라 시럽, 휘핑크림) 한 잔 주문이 완료되었습니다."
+Comparison: Accurately processed the request for both vanilla syrup and whipped cream.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system correctly executed the combined customization request.
+
+75. Input: "Customer’s 1 Input: 에스프레소 두 잔 주세요. Customer's 2 Input: 에스프레소 두 잔에 카라멜 시럽 추가해주세요."
+Output: "에스프레소 (미디움, 핫, 카라멜 시럽) 두 잔 주문이 완료되었습니다."
+Comparison: Correctly added caramel syrup to both espressos.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system successfully applied caramel syrup to both drinks as requested.
+
+76. Input: "Customer’s 1 Input: 아이스 카라멜 마끼아또 한 잔 주세요. Customer's 2 Input: 아이스 카라멜 마끼아또에 샷 하나 더 추가해주세요."
+Output: "카라멜 마끼아또 (미디움, 아이스, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request for an extra shot.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately processed the addition of an extra shot.
+
+77. Input: "Customer’s 1 Input: 아이스 아메리카노 두 잔 주세요. Customer's 2 Input: 아이스 아메리카노 두 잔에 레몬 조각 넣어주세요."
+Output: "아메리카노 (미디움, 아이스, 레몬) 두 잔 주문이 완료되었습니다."
+Comparison: Correctly applied the request for lemon slices to both iced Americanos.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system successfully handled the request for lemon slices.
+
+78. Input: "Customer’s 1 Input: 바닐라 라떼 한 잔 주세요. Customer's 2 Input: 바닐라 라떼에 초콜릿 시럽 추가해주세요."
+Output: "바닐라 라떼 (미디움, 핫, 초콜릿 시럽) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully added the chocolate syrup as requested.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately applied the chocolate syrup addition.
+
+79. Input: "Customer’s 1 Input: 아메리카노 한 잔 주세요. Customer's 2 Input: 콜드브루 한 잔에 바닐라 시럽과 샷 추가해주세요."
+Output: "아메리카노 (미디움, 핫, 없음) 한 잔, 콜드브루 (미디움, 아이스, 바닐라 시럽, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly handled both orders with different customizations.
+Input Action: Order, Option Add
+Output Action: Successfully Order, Successfully Option Add
+Metric: TP
+Reason: The system processed both the order and the customization requests without any issues.
+
+80. Input: "Customer’s 1 Input: 에스프레소 두잔 주세요. Customer's 2 Input: 에스프레소 두잔에 샷 추가해주세요."
+Output: "에스프레소 (미디움, 핫, 샷) 두 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request for additional shots on both espressos.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately processed the request for extra shots.
+
+81. Input: "Customer’s 1 Input: 아이스 아메리카노 엑스라지 한잔 주세요. Customer's 2 Input: 아이스 아메리카노 엑스라지에 바닐라 시럽 넣어주세요."
+Output: "아메리카노 (라지, 아이스, 바닐라 시럽) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully processed the request for vanilla syrup in an extra-large iced americano.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system handled the size and customization request accurately.
+
+82. Input: "Customer’s 1 Input: 아이스 아메리카노 샷 추가한거 한잔 주세요. Customer's 2 Input: 아이스 아메리카노 샷 추가되어있는거 한잔에 휘핑크림 올려주세요."
+Output: "아메리카노 (미디움, 아이스, 샷, 휘핑크림) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request for an extra shot and whipped cream addition.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: Both customizations were applied correctly without any errors.
+
+83. Input: "Customer’s 1 Input: 아메리카노 라지 사이즈 한잔 주세요. Customer's 2 Input: 아메리카노 라지 사이즈 샷 추가한거 한잔에 카라멜 시럽도 넣어주세요."
+Output: "아메리카노 (라지, 핫, 샷, 카라멜 시럽) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly processed the request for an extra shot and caramel syrup addition.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately handled both the shot and syrup additions.
+
+84. Input: "Customer’s 1 Input: 에스프레소 샷 추가한거 두잔 주세요. Customer's 2 Input: 에스프레소 샷 추가한거 한잔에 샷 빼주세요."
+Output: "에스프레소 (미디움, 핫, 샷 없음) 한 잔, 에스프레소 (미디움, 핫, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly handled the request to remove the extra shot from one of the two drinks.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system accurately executed the removal of an extra shot for one drink.
+
+85. Input: "Customer’s 1 Input: 에스프레소 샷 추가한거 두잔 주세요. Customer's 2 Input: 에스프레소 샷 추가한거 두잔에 샷 빼주세요."
+Output: "에스프레소 (미디움, 핫, 샷 없음) 두 잔 주문이 완료되었습니다."
+Comparison: Properly processed the request to remove the extra shot from both drinks.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system effectively removed the extra shot from both drinks as requested.
+
+86. Input: "Customer’s 1 Input: 아이스 카라멜마끼아또 두잔 주세요. Customer's 2 Input: 아이스 카라멜마끼아또 두잔에 휘핑크림 얹어주세요."
+Output: "카라멜마끼아또 (미디움, 아이스, 휘핑크림) 두 잔 주문이 완료되었습니다."
+Comparison: Successfully handled the request to add whipped cream to both drinks.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately applied the whipped cream addition to both drinks.
+
+87. Input: "Customer’s 1 Input: 아이스 카라멜마끼아또 두잔 주세요. Customer's 2 Input: 아이스 카라멜마끼아또 두잔에 휘핑크림 올려주세요."
+Output: "아이스 카라멜마끼아또 (미디움, 아이스, 휘핑크림) 두 잔 주문이 완료되었습니다."
+Comparison: Correctly processed the request for whipped cream addition on both drinks.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system applied the requested customization without issues.
+
+88. Input: "Customer’s 1 Input: 아이스 카라멜마끼아또 두잔 주세요. Customer's 2 Input: 아이스 카라멜마끼아또 두잔에 휘핑크림 추가해주세요."
+Output: "아이스 카라멜마끼아또 (미디움, 아이스, 휘핑크림) 두 잔 주문이 완료되었습니다."
+Comparison: Properly handled the addition of whipped cream as requested.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system correctly executed the whipped cream addition.
+
+89. Input: "Customer’s 1 Input: 에스프레소 샷 추가한거 두잔 주세요. Customer's 2 Input: 에스프레소 샷 추가한거 두잔에 샷 빼주세요."
+Output: "에스프레소 (미디움, 핫, 샷 없음) 두 잔 주문이 완료되었습니다."
+Comparison: Accurately processed the request to remove the extra shot from both drinks.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system effectively fulfilled the request for shot removal.
+
+90. Input: "Customer’s 1 Input: 아이스 카라멜마끼아또 한 잔 주세요. Customer's 2 Input: 아이스 카라멜마끼아또에 샷 추가하고 휘핑크림 올려주세요."
+Output: "카라멜마끼아또 (미디움, 아이스, 샷, 휘핑크림) 한 잔 주문이 완료되었습니다."
+Comparison: Both customizations (extra shot and whipped cream) were applied correctly.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately executed both requested customizations.
+
+91. Input: "Customer’s 1 Input: 아메리카노 엑스라지 한잔 주세요. Customer's 2 Input: 아메리카노 엑스라지에 바닐라 시럽 넣고 휘핑크림 올려주세요."
+Output: "아메리카노 (라지, 핫, 바닐라 시럽, 휘핑크림) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully processed the request for both vanilla syrup and whipped cream.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system applied both customizations correctly without any issues.
+
+92. Input: "Customer’s 1 Input: 아이스 아메리카노 두 잔에 샷 추가해서 주세요. Customer's 2 Input: 아이스 아메리카노 두 잔에 샷 추가한 것 중 한 잔을 빼주세요."
+Output: "아이스 아메리카노 (미디움, 아이스, 샷) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request to remove one customized drink.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system correctly identified and executed the removal of one drink with extra shots.
+
+93. Input: "Customer’s 1 Input: 핫초코 한 잔과 아이스 아메리카노 한 잔 주세요. Customer's 2 Input: 핫초코를 취소해주세요."
+Output: "아이스 아메리카노 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly processed the request to cancel the hot chocolate order.
+Input Action: Remove
+Output Action: Successfully Remove
+Metric: TP
+Reason: The system correctly handled the cancellation request, leaving only the iced Americano.
+
+94. Input: "Customer’s 1 Input: 아이스 라떼 두 잔에 바닐라 시럽 추가해주세요. Customer's 2 Input: 한 잔은 휘핑크림 빼주세요."
+Output: "아이스 라떼 (미디움, 아이스, 바닐라 시럽) 한 잔, 아이스 라떼 (미디움, 아이스, 바닐라 시럽, 휘핑크림 없음) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully handled both the addition of vanilla syrup and removal of whipped cream.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately applied both customizations as requested.
+
+95. Input: "Customer’s 1 Input: 에스프레소 한 잔 주세요. Customer's 2 Input: 에스프레소 한 잔에 카라멜 시럽 추가해주세요."
+Output: "에스프레소 (미디움, 핫, 카라멜 시럽) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully processed the request for caramel syrup addition.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system correctly added caramel syrup to the espresso order.
+
+96. Input: "Customer’s 1 Input: 아이스 아메리카노 세 잔 주세요. Customer's 2 Input: 한 잔은 디카페인으로 바꿔주세요."
+Output: "아이스 아메리카노 (미디움, 아이스, 없음) 두 잔, 아이스 아메리카노 (미디움, 아이스, 디카페인) 한 잔 주문이 완료되었습니다."
+Comparison: Correctly handled the request to change one drink to decaf.
+Input Action: Change
+Output Action: Successfully Change
+Metric: TP
+Reason: The system accurately executed the change to decaf for one of the three drinks.
+
+97. Input: "Customer’s 1 Input: 아이스 라떼 두 잔 주세요. Customer's 2 Input: 한 잔에 샷 추가하고, 다른 한 잔은 바닐라 시럽 넣어주세요."
+Output: "아이스 라떼 (미디움, 아이스, 샷) 한 잔, 아이스 라떼 (미디움, 아이스, 바닐라 시럽) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully applied customizations to both drinks.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system handled both customization requests correctly.
+
+98. Input: "Customer’s 1 Input: 아메리카노 라지 두 잔 주세요. Customer's 2 Input: 한 잔에 휘핑크림 추가해주세요."
+Output: "아메리카노 (라지, 핫, 없음) 한 잔, 아메리카노 (라지, 핫, 휘핑크림) 한 잔 주문이 완료되었습니다."
+Comparison: Properly handled the request for whipped cream addition to one drink.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system accurately applied the whipped cream addition to one of the drinks.
+
+99. Input: "Customer’s 1 Input: 카푸치노 세 잔 주세요. Customer's 2 Input: 한 잔에 시나몬 파우더 넣어주세요."
+Output: "카푸치노 (미디움, 핫, 없음) 두 잔, 카푸치노 (미디움, 핫, 시나몬 파우더) 한 잔 주문이 완료되었습니다."
+Comparison: Successfully added cinnamon powder to one drink.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system handled the request for customization without errors.
+
+100. Input: "Customer’s 1 Input: 아이스 바닐라 라떼 두 잔 주세요. Customer's 2 Input: 둘 다 초콜릿 시럽 추가해주세요."
+Output: "아이스 바닐라 라떼 (미디움, 아이스, 초콜릿 시럽) 두 잔 주문이 완료되었습니다."
+Comparison: Properly applied the request for chocolate syrup to both drinks.
+Input Action: Option Add
+Output Action: Successfully Option Add
+Metric: TP
+Reason: The system successfully applied the requested customization to both drinks.

@@ -1,0 +1,1881 @@
+1.
+Input: "Customer’s 1 Input: 아이스 아메리카노 한잔, 그리고 뜨거운 라떼도 주세요."
+Output:
+Copy code
+최종 주문 상태:
+아메리카노 (사이즈: 미디움, 온도: 아이스, 추가옵션: 없음) 한 잔
+라떼 (사이즈: 미디움, 온도: 핫, 추가옵션: 없음) 한 잔
+주문이 완료되었습니다.
+Comparison:
+Recognized two separate orders (iced americano and hot latte).
+Correctly identified the size as "미디움" (default size).
+Properly categorized temperatures (아이스 for iced, 핫 for hot).
+Additional options were correctly noted as "없음" (no additional options).
+
+2.
+Input: "Customer’s 1 Input: 카라멜 마키아또 두잔 휘핑크림 없이 주세요."
+Output:
+scss
+Copy code
+카라멜 마키아또 (미디움, 핫, 없음) 2 잔 주문이 완료되었습니다.
+Comparison:
+Correctly processed the order for two caramel macchiatos without whipped cream.
+The default size "미디움" and temperature "핫" were correctly applied.
+"휘핑크림 없음" was implied correctly as "없음."
+
+3.
+Input: "Customer’s 1 Input: 아이스 라떼 두잔, 하나는 라지로, 하나는 스몰로 주세요."
+Output:
+scss
+Copy code
+라떼 (미디움, 아이스, 없음) 한 잔, 라떼 (라지, 아이스, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Accurately recognized two iced lattes with specified sizes (라지 and 미디움).
+Properly differentiated between sizes.
+No additional options ("없음").
+
+4.
+Input: "Customer’s 1 Input: 라떼 두잔, 각각 아이스로 부탁드립니다."
+Output:
+scss
+Copy code
+라떼 (미디움, 아이스, 없음) 두 잔 주문이 완료되었습니다.
+Comparison:
+Correctly handled the request for two iced lattes.
+Proper size "미디움" (default).
+No additional options ("없음").
+
+5.
+Input: "Customer’s 1 Input: 핫 아메리카노 세잔, 한잔은 엑스트라 샷 추가해 주세요."
+Output:
+scss
+Copy code
+아메리카노 (미디움, 핫, 샷) 세 잔 주문이 완료되었습니다.
+Comparison:
+Processed three hot americanos with one having an extra shot.
+Included "샷" for the extra shot correctly.
+Maintained default size "미디움."
+
+6.
+Input: "Customer’s 1 Input: 카라멜 시럽 추가한 아이스 라떼 한잔, 그리고 샷 추가한 에스프레소 두잔 주세요."
+Output:
+makefile
+Copy code
+주문이 접수되었습니다. 
+
+라떼와 에스프레소의 상태를 업데이트합니다.
+
+라떼: 카라멜 마끼아또 (미디움, 아이스, 카라멜 시럽) 1잔
+에스프레소: 에스프레소 (미디움, 아이스, 샷) 2잔
+
+주문 상태:
+라떼 (카라멜 마끼아또, 아이스, 카라멜 시럽) 1잔
+에스프레소 (에스프레소, 아이스, 샷) 2잔
+
+주문이 완료되었습니다.
+Comparison:
+Correctly recognized two distinct orders: iced latte with caramel syrup and espresso with an extra shot.
+Properly categorized additional options (caramel syrup and shot).
+Updated status for each item accurately.
+
+7.
+Input: "Customer’s 1 Input: 카페라떼 두잔, 한잔은 엑스트라 샷 추가하고 다른 한잔은 휘핑크림 추가해주세요."
+Output:
+scss
+Copy code
+카페라떼 (사이즈: 미디움, 온도: 핫, 추가옵션: 샷) 1잔,
+카페라떼 (사이즈: 미디움, 온도: 핫, 추가옵션: 휘핑크림) 1잔
+
+최종 주문 상태:
+"카페라떼 (미디움, 핫, 샷) 1잔 주문이 완료되었습니다."
+"카페라떼 (미디움, 핫, 휘핑크림) 1잔 주문이 완료되었습니다."
+Comparison:
+Identified both requests: one latte with an extra shot, one with whipped cream.
+Default size and temperature applied correctly.
+Clear differentiation between the two customizations.
+
+8.
+Input: "Customer’s 1 Input: 아이스 카라멜 마키아또 두잔, 하나는 스몰 사이즈로 주세요."
+Output:
+Copy code
+카라멜 마끼아또 두잔 중 하나는 스몰 사이즈로 주문하셨습니다.
+
+주문 상태:
+카라멜 마끼아또 (스몰, 아이스, 없음) 1 잔, (미디움, 아이스, 없음) 1 잔
+
+주문이 완료되지 않았습니다. 계속 주문을 입력해주세요.
+Comparison:
+Correctly recognized the request for two iced caramel macchiatos with different sizes (one small, one medium).
+Noted that the order was incomplete, awaiting further input.
+Differentiated sizes accurately.
+
+9.
+Input: "Customer’s 1 Input: 라떼 두 잔에 하나는 뜨겁게, 다른 하나는 아이스로 부탁드립니다."
+Output:
+Copy code
+주문이 접수되었습니다. 최종 주문 상태는 다음과 같습니다:
+
+라떼 (미디움, 핫, 없음) 1 잔
+라떼 (미디움, 아이스, 없음) 1 잔
+
+라떼 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다.
+라떼 (미디움, 아이스, 없음) 1 잔 주문이 완료되었습니다.
+Comparison:
+Accurately processed the request for two lattes with different temperatures (hot and iced).
+Applied the default size "미디움."
+Correctly handled the separation of orders with distinct temperatures.
+
+10.
+Input: "Customer’s 1 Input: 아이스 카페 라떼 라지 두 잔과 바닐라 시럽 추가한 카페 라떼 한 잔 주세요."
+Output:
+scss
+Copy code
+카페 라떼 (라지, 아이스, 바닐라 시럽) 한 잔, 카페 라떼 (라지, 아이스, 바닐라 시럽) 한 잔 주문이 완료되었습니다.
+Comparison:
+Recognized the request for two iced lattes with vanilla syrup.
+Properly identified the additional customization (vanilla syrup).
+Applied the correct size "라지" for both drinks.
+
+11.
+Input: "Customer's 1 Input: 아메리카노 한잔 주세요."
+Output:
+scss
+Copy code
+아메리카노 (미디움, 핫, 없음) 1잔 주문이 완료되었습니다.
+Comparison:
+Correctly identified the order for an Americano.
+Default settings applied: medium size, hot, no additional options.
+Order confirmation message was accurate.
+
+12.
+Input: "Customer's 1 Input: 라떼 두 잔 부탁드려요."
+Output:
+scss
+Copy code
+라떼 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다.
+Comparison:
+Detected the order for two lattes.
+Applied default values: medium size, hot temperature.
+Order quantity was correctly noted as two.
+
+13.
+Input: "Customer's 1 Input: 아이스 아메리카노 하나 주세요."
+Output:
+scss
+Copy code
+아메리카노 (미디움, 아이스, 없음) 1 잔 주문이 완료되었습니다.
+Comparison:
+Recognized the request for an iced Americano.
+Accurately applied the "아이스" (iced) option.
+Default size (medium) was used.
+
+14.
+Input: "Customer's 1 Input: 카페라떼 따뜻하게 한잔 주세요."
+Output:
+scss
+Copy code
+카페라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Correctly processed the request for a hot cafe latte.
+Applied the default size (medium) and no additional options.
+Confirmation message matched the order accurately.
+
+15.
+Input: "Customer's 1 Input: 에스프레소 두 잔 주세요."
+Output:
+scss
+Copy code
+에스프레소 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다.
+Comparison:
+Recognized the request for two espressos.
+Applied default values: medium size, hot temperature, no options.
+Quantity was correctly identified as two.
+
+16.
+Input: "Customer's 1 Input: 카푸치노 한잔 주세요."
+Output:
+scss
+Copy code
+카푸치노 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다.
+Comparison:
+Processed the order for one cappuccino correctly.
+Default values were applied: medium size, hot.
+Confirmation message was consistent with the input.
+
+17.
+Input: "Customer's 1 Input: 아이스 카라멜 마끼아또 하나 주세요."
+Output:
+scss
+Copy code
+카라멜 마끼아또 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Detected the request for an iced caramel macchiato.
+Accurately applied the "아이스" (iced) option.
+Default size (medium) and no additional options were used.
+
+18.
+Input: "Customer's 1 Input: 핫초코 한잔 주세요."
+Output:
+scss
+Copy code
+핫초코 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Correctly recognized the order for a hot chocolate.
+Applied the default settings: medium size, hot temperature.
+No customization was specified, and the confirmation was accurate.
+
+19.
+Input: "Customer's 1 Input: 콜드브루 한잔 부탁드려요."
+Output:
+scss
+Copy code
+콜드브루 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Identified the order for cold brew coffee.
+Incorrectly applied the hot option instead of the expected iced option for cold brew.
+Default size (medium) was applied, but the temperature handling needs correction.
+
+20.
+Input: "Customer's 1 Input: 바닐라 라떼 한잔 주세요."
+Output:
+scss
+Copy code
+바닐라라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Processed the request for a vanilla latte accurately.
+Default settings applied: medium size, hot.
+Confirmation message matched the order without issues.
+
+21.
+Input: "Customer's 1 Input: 디카페인 아메리카노 한잔 주세요."
+Output:
+scss
+Copy code
+디카페인 아메리카노 (미디움, 핫, 없음) 1잔 주문이 완료되었습니다.
+Comparison:
+The request for a decaffeinated Americano was accurately detected.
+Default values applied: medium size, hot temperature.
+No customization was specified, and the confirmation message was correct.
+
+22.
+Input: "Customer's 1 Input: 카페모카 두 잔 주세요."
+Output:
+scss
+Copy code
+카페모카 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다.
+Comparison:
+Correctly processed the order for two cafe mochas.
+Applied default settings: medium size, hot.
+Order quantity was noted as two, and the confirmation was accurate.
+
+23.
+Input: "Customer's 1 Input: 아이스 라떼 한잔 주세요."
+Output:
+scss
+Copy code
+라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Detected the request for an iced latte.
+Correctly applied the "아이스" (iced) option.
+Default size (medium) and no additional options were used.
+
+24.
+Input: "Customer's 1 Input: 아포가토 한잔 부탁드려요."
+Output:
+arduino
+Copy code
+아포가토를 제공하지 않습니다. "없는 메뉴"를 출력하고, 다음 입력을 대기합니다.
+Comparison:
+Correctly identified that "아포가토" is not part of the menu.
+Displayed an appropriate message indicating that the item is unavailable.
+The system handled the situation by waiting for the next input.
+
+25.
+Input: "Customer's 1 Input: 핫 아메리카노 두 잔 주세요."
+Output:
+scss
+Copy code
+아메리카노 (미디움, 핫, 없음) 2 잔 주문이 완료되었습니다.
+Comparison:
+Processed the request for two hot Americanos correctly.
+Default settings applied: medium size, hot temperature.
+Quantity was noted as two, and the confirmation was accurate.
+
+26.
+Input: "Customer's 1 Input: 아이스 카푸치노 하나 주세요."
+Output:
+scss
+Copy code
+카푸치노 (미디움, 아이스, 없음) 1 잔 주문이 완료되었습니다.
+Comparison:
+Correctly identified the order for an iced cappuccino.
+Applied the "아이스" (iced) option accurately.
+Default size (medium) was used, and no additional options were specified.
+
+27.
+Input: "Customer's 1 Input: 엑스트라 샷 추가한 라떼 한잔 주세요."
+Output:
+scss
+Copy code
+라떼 (미디움, 핫, 엑스트라 샷) 1 잔 주문이 완료되었습니다.
+Comparison:
+Detected the request for a latte with an extra shot.
+Applied the customization (extra shot) correctly.
+Default values (medium size, hot) were used, and the order confirmation was accurate.
+
+28.
+Input: "Customer's 1 Input: 카라멜 시럽 추가한 아메리카노 한잔 주세요."
+Output:
+Copy code
+주문 상태:
+아메리카노 (미디움, 핫, 카라멜시럽) 한 잔 주문이 완료되었습니다.
+Comparison:
+Recognized the request for an Americano with added caramel syrup.
+Applied the customization (caramel syrup) accurately.
+Used default values (medium size, hot), and the confirmation message matched the order.
+
+29.
+Input: "Customer's 1 Input: 따뜻한 카페라떼 두 잔 주세요."
+Output:
+scss
+Copy code
+카페라떼 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다.
+Comparison:
+Correctly processed the request for two hot cafe lattes.
+Applied default values: medium size, hot.
+Quantity was noted as two, and the confirmation was accurate.
+
+30.
+Input: "Customer's 1 Input: 아이스 콜드브루 두 잔 부탁드려요."
+Output:
+arduino
+Copy code
+콜드브루는 현재 메뉴에 없습니다. "없는 메뉴"입니다.
+Comparison:
+Correctly identified that "콜드브루" is not available on the menu.
+Displayed an appropriate message indicating that the item is unavailable.
+The system handled the situation properly by informing the customer.
+
+31.
+Input: "Customer's 1 Input: 그린티 라떼 한 잔 주세요."
+Output:
+scss
+Copy code
+그린티 라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Correctly recognized the request for a green tea latte.
+Applied default settings: medium size, hot.
+No additional options were specified, and the order confirmation was accurate.
+
+32.
+Input: "Customer's 1 Input: 오렌지 주스 미디엄 사이즈로 하나 주세요."
+Output:
+scss
+Copy code
+오렌지 주스 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다.
+Comparison:
+Detected the request for a medium-sized orange juice.
+Incorrectly assigned a hot temperature, as juice should typically be served cold.
+Confirmation message noted the medium size but inaccurately described the temperature as "hot."
+
+33.
+Input: "Customer's 1 Input: 딸기 스무디 하나 주문할게요."
+Output:
+scss
+Copy code
+딸기 스무디 (미디움, 핫, 없음) 1잔 주문이 완료되었습니다.
+Comparison:
+Recognized the order for a strawberry smoothie.
+Incorrectly assigned a hot temperature, as smoothies are typically cold.
+The system defaulted to medium size and no additional options, but the temperature setting was incorrect.
+
+34.
+Input: "Customer's 1 Input: 아메리카노 다섯 잔 주세요."
+Output:
+scss
+Copy code
+아메리카노 (미디움, 핫, 없음) 다섯 잔 주문이 완료되었습니다.
+Comparison:
+Correctly processed the order for five Americanos.
+Applied default settings: medium size, hot temperature.
+Quantity was correctly noted as five, and the confirmation message was accurate.
+
+35.
+Input: "Customer's 1 Input: 카푸치노 두 잔에 하나는 뜨겁게, 다른 하나는 아이스로 주세요."
+Output:
+Copy code
+주문 추가:
+카푸치노 (미디움, 핫, 없음) 1 잔
+카푸치노 (미디움, 아이스, 없음) 1 잔
+
+주문 상태:
+카푸치노 (미디움, 핫, 없음) 1 잔
+카푸치노 (미디움, 아이스, 없음) 1 잔
+
+주문이 완료되었습니다.
+Comparison:
+Correctly processed two cappuccinos with different temperatures.
+Differentiated between hot and iced options.
+The system confirmed both orders and displayed them in a clear format.
+
+36.
+Input: "Customer’s 1 Input: 아메리카노 두 잔 주세요. Customer's 2 Input: 아메리카노 두 잔 말고 라떼로 바꿔주세요."
+Output:
+rust
+Copy code
+주문 상태:
+아메리카노 (미디움, 핫, 없음) 4 잔
+
+(아메리카노 2 잔 -> 아메리카노 0 잔, 라떼 2 잔)
+주문이 완료되었습니다.
+Comparison:
+Detected the initial order for two Americanos.
+Correctly handled the modification request, changing the order to two lattes.
+The final order state was updated correctly, but the system displayed "아메리카노 4 잔" initially, which may indicate a duplication issue.
+
+37.
+Input: "Customer’s 1 Input: 아이스 카라멜 마끼아또 한잔 주세요. Customer's 2 Input: 아이스 카라멜 마끼아또 한잔을 핫으로 바꿔주세요."
+Output:
+arduino
+Copy code
+아이스 카라멜 마끼아또 한 잔 주세요.
+
+최종 주문 상태:
+"카라멜 마끼아또 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison:
+The request for an iced caramel macchiato was correctly identified.
+However, the change request to make it hot was ignored, and the final confirmation did not reflect this modification.
+The output indicated the original order without applying the customer's update request.
+
+38.
+Input: "Customer’s 1 Input: 라지 사이즈로 주세요. Customer's 2 Input: 라지 사이즈 대신 미디움 사이즈로 바꿔주세요."
+Output:
+Copy code
+주문 추가:
+라떼 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다.
+
+주문 수정:
+라떼의 사이즈를 라지에서 미디움으로 변경합니다.
+
+최종 주문 상태:
+라떼 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다.
+Comparison:
+Detected the initial request for a large-sized drink but defaulted to a latte without specifying the type.
+The size change from large to medium was applied correctly.
+The final confirmation reflected the size adjustment accurately.
+
+39.
+Input: "Customer’s 1 Input: 아이스 아메리카노 세잔 주세요. Customer's 2 Input: 아이스 아메리카노 세잔 대신 카푸치노 두잔으로 바꿔주세요."
+Output:
+Copy code
+주문 추가: 아이스 아메리카노 세잔
+
+주문 추가: 카푸치노 두잔
+
+주문 상태:
+아메리카노 (미디움, 아이스, 없음) 세 잔 주문이 완료되었습니다.
+카푸치노 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다.
+
+주문 상태:
+아메리카노 (미디움, 아이스, 없음) 세 잔 주문이 완료되었습니다.
+카푸치노 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다.
+Comparison:
+Correctly processed the initial order of three iced Americanos.
+Detected the request to change the order to two cappuccinos.
+However, the final confirmation included both the initial and modified orders, resulting in a discrepancy where both sets of drinks were confirmed.
+
+40.
+Input: "Customer’s 1 Input: 아이스 카페라떼 한잔 주세요. Customer's 2 Input: 아이스 카페라떼 말고 아이스 초콜릿 라떼로 바꿔주세요."
+Output:
+arduino
+Copy code
+주문 상태:
+"카페라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+"카페라떼 (미디움, 아이스, 없음) 한 잔 변경되지 않았습니다."
+
+주문 상태:
+"초콜릿 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+
+최종 주문 상태:
+"카페라떼 (미디움, 아이스, 없음) 한 잔, 초콜릿 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison:
+Initially detected the order for an iced cafe latte.
+Attempted to handle the request for changing it to an iced chocolate latte.
+The final output erroneously included both the original and modified orders instead of replacing the initial order.
+
+41.
+Input: "Customer’s 1 Input: 아이스 바닐라 라떼 한잔 주세요. Customer's 2 Input: 아이스 바닐라 라떼를 따뜻한 카페라떼로 바꿔주세요."
+Output:
+markdown
+Copy code
+주문 상태 초기화:
+바닐라 라떼 (미디움, 핫, 샷 없음) 1잔
+
+1. 바닐라 라떼 (미디움, 핫, 샷 없음) 1잔
+주문이 완료되었습니다.
+
+주문 수정:
+바닐라 라떼 (미디움, 핫, 샷 없음) 1잔 -> 바닐라 라떼 (미디움, 핫, 샷 없음) 0잔
+바닐라 라떼 (미디움, 핫, 샷 없음) 1잔 -> 바닐라 라떼 (미디움, 핫, 샷 없음) 1잔
+
+2. 카페라떼 (미디움, 핫, 샷 없음) 1잔
+
+주문 상태:
+바닐라 라떼 (미디움, 핫, 샷 없음) 1잔
+카페라떼 (미디움, 핫, 샷 없음) 1잔
+
+주문이 완료되었습니다.
+Comparison:
+Correctly identified the order for an iced vanilla latte.
+Properly handled the request to change it to a hot cafe latte.
+The output confirmed the replacement but displayed unnecessary intermediate steps, making it verbose.
+42.
+Input: "Customer's 1 Input: 핫 바닐라 라떼 한잔을 아이스 바닐라 라떼로 바꿔주시고, 샷 하나 추가해 주세요."
+Output:
+makefile
+Copy code
+기존 주문: 바닐라 라떼
+
+수정: 바닐라 라떼 -> 바닐라 라떼 (사이즈: 미디움, 온도: 아이스, 추가 옵션: 샷)
+
+최종 주문 상태: 바닐라 라떼 (미디움, 아이스, 샷) 한 잔 주문이 완료되었습니다.
+Comparison:
+Correctly detected the change request from hot to iced.
+Properly applied the extra shot option.
+The final output was clear and concise.
+
+43.
+Input: "Customer’s 1 Input: 라지 카푸치노 두잔을 미디움 사이즈로 바꿔주세요."
+Output:
+Copy code
+라떼와 카페모카는 동일하므로, 카페모카로 대체합니다.
+Comparison:
+Incorrectly assumed that a change from large to medium size required substituting with a different drink (cafe mocha).
+This response was inaccurate and confusing, as it deviated from the customer's request.
+
+44.
+Input: "Customer’s 1 Input: 아메리카노 라지 두잔 중 한 잔을 라떼로 변경해주세요."
+Output:
+Copy code
+주문 상태를 업데이트합니다.
+
+최종 주문 상태:
+아메리카노 (라지, 핫, 없음) 1 잔
+라떼 (라지, 핫, 없음) 1 잔
+
+남은 잔: 아메리카노 1 잔
+
+주문이 완료되었습니다.
+Comparison:
+Correctly identified the request to change one of the two large Americanos to a latte.
+Updated the order status accurately and provided a clear final confirmation.
+45.
+Input: "Customer’s 1 Input: 아이스 카페라떼에서 샷 추가한 걸 뺀 라떼로 바꿔주세요."
+Output:
+diff
+Copy code
+현재 주문 내역:
+아이스 카페라떼 (미디움, 아이스, 샷)
+
+주문 수정:
+- 라떼로 변경합니다.
+
+최종 주문:
+라떼 (미디움, 핫, 샷)
+
+현재 주문 상태:
+라떼 (미디움, 핫, 샷) 한 잔 주문이 완료되었습니다.
+Comparison:
+Detected the request to remove the extra shot from the iced cafe latte.
+Changed it to a regular hot latte with a shot, which was partially correct.
+There was confusion in applying the "shot" option, as it should have been removed rather than retained.
+
+46.
+Input: "Customer’s 1 Input: 휘핑크림을 뺀 카라멜마끼아또로 바꿔주세요."
+Output:
+Copy code
+주문이 수정됩니다.
+
+현재 주문 내역:
+카라멜마끼아또 (미디움, 핫, 휘핑크림 없음) 1잔
+
+주문이 완료되었습니다.
+
+(수정된 주문 내역: 카라멜마끼아또 (미디움, 핫, 없음) 1잔)
+Comparison:
+Properly recognized the request to exclude whipped cream.
+The output confirmed the modification clearly and reflected the correct order status.
+
+47.
+Input: "Customer’s 1 Input: 아이스 키페라떼 대신 바닐라 라떼로 바꿔주시고, 엑스라지로 해주세요."
+Output:
+Copy code
+주문이 접수되었습니다.
+
+최종 주문 상태:
+바닐라라떼 (미디움, 아이스, 없음) 1잔 주문이 완료되었습니다.
+Comparison:
+Detected the request for changing the drink but incorrectly applied a medium size instead of the specified extra-large size.
+The output confirmed the vanilla latte but ignored the size preference.
+
+48.
+Input: "Customer’s 1 Input: 아메리카노 두 잔 주세요. Customer's 2 Input: 아메리카노 두 잔 말고 카푸치노로 바꿔주세요."
+Output:
+markdown
+Copy code
+주문이 다음과 같습니다:
+
+1. 아메리카노 두 잔
+2. 아메리카노 두 잔 빼고 카푸치노로 바꿉니다.
+
+주문 처리 중입니다...
+
+최종 주문 상태:
+아메리카노 (미디움, 핫, 없음) 0 잔
+카푸치노 (미디움, 핫, 없음) 2 잔
+
+카페 이용해주셔서 감사합니다.
+Comparison:
+Correctly handled the modification request to replace Americanos with cappuccinos.
+Provided a clear final confirmation and successfully updated the order status.
+
+49.
+Input: "Customer’s 1 Input: 아이스 카페라떼 한잔 주세요. Customer's 2 Input: 아이스 카페라떼 말고 아이스 초콜릿 라떼로 바꿔주세요."
+Output:
+arduino
+Copy code
+주문 상태:
+"카페라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+"카페라떼 (미디움, 아이스, 없음) 한 잔 변경되지 않았습니다."
+
+주문 상태:
+"초콜릿 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+
+최종 주문 상태:
+"카페라떼 (미디움, 아이스, 없음) 한 잔, 초콜릿 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다."
+Comparison:
+Initially detected the request for an iced cafe latte.
+Attempted to handle the change to an iced chocolate latte but retained the original drink in the final status.
+The output was inconsistent, as it confirmed both the initial and modified orders.
+
+50.
+Input: "Customer’s 1 Input: 아이스 바닐라 라떼 하나 빼주세요."
+Output:
+scss
+Copy code
+바닐라 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Correctly detected the removal of one iced vanilla latte from the order.
+The output confirmed the cancellation but did not explicitly state the reduction in quantity.
+
+51.
+Input: "Customer’s 1 Input: 아이스 아메리카노 두 잔 주세요. Customer's 2 Input: 아이스 아메리카노 한 잔 빼주세요."
+Output:
+scss
+Copy code
+아메리카노 (미디움, 아이스, 없음) 두 잔 주문이 완료되었습니다.
+Comparison:
+Correctly identified the request for two iced Americanos initially.
+However, it did not process the follow-up request to remove one of the orders, leading to an incomplete output.
+
+52.
+Input: "Customer’s 1 Input: 에스프레소 한 잔 주세요. Customer's 2 Input: 에스프레소 취소해주세요."
+Output:
+Copy code
+에스프레소 한 잔 주문이 있습니다. 에스프레소 한 잔을 취소합니다.
+
+최종 주문 상태:
+아무 주문이 없습니다.
+Comparison:
+Correctly handled the cancellation request.
+The output was clear, confirming the removal of the espresso order.
+
+53.
+Input: "Customer’s 1 Input: 카푸치노 네 잔 주세요. Customer's 2 Input: 카푸치노 세 잔을 빼주세요."
+Output:
+Copy code
+주문 상태:
+카푸치노 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다.
+Comparison:
+Properly identified the reduction request, leaving one cappuccino.
+The final output was concise and accurate.
+
+54.
+Input: "Customer’s 1 Input: 핫초코 하나, 아이스 아메리카노 네 잔, 카라멜 마끼아또 한 잔 주세요. Customer's 2 Input: 카라멜 마끼아또 한 잔을 취소할게요."
+Output:
+makefile
+Copy code
+핫초코: 미디움, 핫, 없음
+아메리카노: 미디움, 아이스, 없음 (네 잔)
+카라멜 마끼아또: 미디움, 핫, 없음 (한 잔 취소)
+
+최종 주문 상태:
+핫초코 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다.
+아메리카노 (미디움, 아이스, 없음) 4 잔 주문이 완료되었습니다.
+카라멜 마끼아또 (미디움, 핫, 없음) 0 잔 주문이 완료되었습니다.
+Comparison:
+Correctly handled the initial order and the follow-up cancellation request.
+The output accurately reflected the change, confirming the final order status.
+
+55.
+Input: "Customer’s 1 Input: 핫초코 세 잔과 바닐라 라떼 두 잔 주세요. Customer's 2 Input: 바닐라 라떼 두 잔 중 한 잔만 취소해주세요."
+Output:
+scss
+Copy code
+핫초코 세 잔과 바닐라 라떼 두 잔 주세요.
+
+(주문 처리 중...)
+
+핫초코 (미디움, 핫, 없음) 세 잔 주문이 완료되었습니다.
+바닐라 라떼 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다.
+
+(주문 수정...)
+
+바닐라 라떼 두 잔 중 한 잔 취소합니다.
+
+핫초코 (미디움, 핫, 없음) 세 잔 주문이 완료되었습니다.
+바닐라 라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다.
+
+최종 주문 상태:
+핫초코 (미디움, 핫, 없음) 세 잔 주문이 완료되었습니다.
+바닐라 라떼 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Correctly identified the follow-up request to cancel one vanilla latte.
+Provided clear and accurate confirmation of the updated order status.
+
+56.
+Input: "Customer’s 1 Input: 에스프레소 더블샷 두 잔과 아이스 아메리카노 하나 주세요. Customer's 2 Input: 에스프레소 더블샷 한 잔을 빼주세요."
+Output:
+Copy code
+에스프레소 더블샷 두 잔과 아이스 아메리카노 하나 주세요.
+
+주문 상태:
+에스프레소 더블샷 (미디움, 아이스, 없음) 두 잔 주문이 완료되었습니다.
+아이스 아메리카노 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다.
+
+에스프레소 더블샷 한 잔을 빼주세요.
+
+주문 상태:
+에스프레소 더블샷 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다.
+
+최종 주문 상태:
+에스프레소 더블샷 (미디움, 아이스, 없음) 한 잔
+아이스 아메리카노 (미디움, 핫, 없음) 한 잔
+잔 주문이 완료되었습니다.
+Comparison:
+Correctly processed the request to remove one double-shot espresso.
+The output confirmed the updated order status accurately.
+
+57.
+Input: "Customer’s 1 Input: 아이스 바닐라 라떼 세 잔 주세요. Customer's 2 Input: 아이스 바닐라 라떼 세 잔 중 두 잔을 취소해주세요."
+Output:
+Copy code
+바닐라 라떼 세 잔을 주문하셨습니다.
+
+주문 상태:
+바닐라 라떼 (미디움, 아이스, 없음) 세 잔
+
+바닐라 라떼 세 잔 중 두 잔을 취소합니다.
+
+주문 상태:
+바닐라 라떼 (미디움, 아이스, 없음) 두 잔
+
+최종 주문 상태:
+바닐라 라떼 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Properly handled the request to cancel two out of three iced vanilla lattes.
+The final output correctly displayed the remaining quantity.
+
+58.
+Input: "Customer’s 1 Input: 카푸치노 하나, 아메리카노 두 잔 주세요. Customer's 2 Input: 아메리카노 두 잔 중 하나만 빼주세요."
+Output:
+Copy code
+주문 추가: 카푸치노 하나, 아메리카노 두 잔
+주문 상태:
+카푸치노 (미디움, 핫, 없음) 1잔
+
+주문 추가: 카푸치노 하나, 아메리카노 두 잔
+주문 상태:
+카푸치노 (미디움, 핫, 없음) 1잔
+아메리카노 (미디움, 핫, 없음) 2잔
+
+주문 수정: 아메리카노 두 잔 중 하나만 빼주세요.
+주문 상태:
+카푸치노 (미디움, 핫, 없음) 1잔
+아메리카노 (미디움, 핫, 없음) 1잔
+
+최종 주문 상태:
+카푸치노 (미디움, 핫, 없음) 1잔
+아메리카노 (미디움, 핫, 없음) 1잔
+아메리카노 (미디움, 핫, 없음) 1잔 주문이 완료되었습니다.
+Comparison:
+Correctly identified the request to reduce the number of Americanos.
+The output was repetitive but ultimately provided the correct final order status.
+
+59.
+Input: "Customer’s 1 Input: 아이스 아메리카노 두 잔에 샷 추가해서 주세요. Customer's 2 Input: 아이스 아메리카노 두 잔에 샷 추가한 것 중 한 잔을 빼주세요."
+Output:
+python
+Copy code
+주문 처리 중입니다...
+
+1. Customer's 1 Input: 아이스 아메리카노 두 잔에 샷 추가해서 주세요.
+   - 아이스 아메리카노 (미디움, 아이스, 샷) 2 잔 주문이 완료되었습니다.
+
+2. Customer's 2 Input: 아이스 아메리카노 두 잔에 샷 추가한 것 중 한 잔을 빼주세요.
+   - 아이스 아메리카노 (미디움, 아이스, 샷) 1 잔을 제거했습니다.
+
+최종 주문 상태:
+아이스 아메리카노 (미디움, 아이스, 샷) 1 잔 주문이 완료되었습니다.
+Comparison:
+Properly handled the request for additional shots and the follow-up request to reduce the quantity.
+The output was correct and clear.
+
+60.
+Input: "Customer's 1 Input: 카푸치노 한 잔과 라떼 한 잔 주세요. Customer's 2 Input: 카푸치노 한 잔 빼주세요."
+Output:
+arduino
+Copy code
+카푸치노 한 잔과 라떼 한 잔 주세요.
+카푸치노 한 잔 빼주세요.
+
+최종 주문 상태:
+"카푸치노 (미디움, 핫, 없음) 잔 주문이 완료되었습니다."
+Comparison:
+Detected the initial order and correctly processed the request to remove the cappuccino.
+The output had a minor issue with clarity; it seemed to repeat the cancellation confirmation.
+
+61.
+Input: "Customer's 1 Input: 딸기 스무디 두 잔 주세요. Customer's 2 Input: 딸기 스무디 한 잔 빼주세요."
+Output:
+markdown
+Copy code
+주문 처리를 시작합니다.
+
+1. 처음 주문: "딸기 스무디 두 잔 주세요."
+   - 메뉴: 딸기 스무디
+   - 사이즈: 미디움 (기본값)
+   - 온도: 핫 (기본값)
+   - 추가 옵션: 없음 (기본값)
+   - 수량: 2
+
+2. 두 번째 주문: "딸기 스무디 한 잔 빼주세요."
+   - 메뉴: 딸기 스무디
+   - 사이즈: 미디움 (기본값)
+   - 온도: 핫 (기본값)
+   - 추가 옵션: 없음 (기본값)
+   - 수량: 1 감소
+
+최종 주문 상태:
+"딸기 스무디 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+
+주문이 완료되었습니다. 감사합니다.
+Comparison:
+Properly handled the initial order and the cancellation request.
+The final status accurately reflected the updated order.
+
+62.
+Input: "Customer's 1 Input: 그린티 한 잔과 핫 초코 한 잔 주세요. Customer's 2 Input: 핫 초코 한 잔 빼주세요."
+Output:
+diff
+Copy code
+주문 처리를 시작합니다.
+
+처음에 주어진 입력은 다음과 같습니다:
+- 그린티 한 잔
+- 핫 초코 한 잔
+
+주문 상태:
+그린티 (미디움, 핫, 없음) 한 잔
+초코라떼 (미디움, 핫, 없음) 한 잔
+
+두 번째 입력은 핫 초코 한 잔 빼기입니다.
+
+주문 상태:
+그린티 (미디움, 핫, 없음) 한 잔
+초코라떼 (미디움, 핫, 없음) 한 잔
+
+초코라떼 한 잔을 제거합니다.
+
+주문 상태:
+그린티 (미디움, 핫, 없음) 한 잔
+초코라떼 (미디움, 핫, 없음) 0 잔
+
+최종 주문 상태:
+그린티 (미디움, 핫, 없음) 한 잔
+초코라떼 (미디움, 핫, 없음) 0 잔
+
+주문이 완료되었습니다.
+Comparison:
+Correctly detected and processed the removal request for hot chocolate.
+The output provided a clear and accurate final order status.
+
+63.
+Input: "Customer's 1 Input: 오렌지 주스 두 잔 주세요. Customer's 2 Input: 오렌지 주스 한 잔 빼주세요."
+Output:
+rust
+Copy code
+주문 상태를 업데이트 중입니다.
+
+주문 추가: "오렌지 주스" (사이즈: 미디움, 온도: 핫, 추가 옵션: 없음) 두 잔 추가
+
+주문 수정: "오렌지 주스" 한 잔 빼기 (2 잔 -> 1 잔)
+
+최종 주문 상태:
+"오렌지 주스 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison:
+Correctly handled the follow-up request to remove one of the orange juice orders.
+The output was straightforward and accurate.
+
+64.
+Input: "Customer's 1 Input: 치즈케이크 한 조각과 브라우니 한 조각 주세요. Customer's 2 Input: 치즈케이크 한 조각 빼주세요."
+Output:
+scss
+Copy code
+죄송하지만, 카페에서는 음료만을 제공합니다. 메뉴에 없는 음식(치즈케이크, 브라우니, 아메리카노) 주문을 받을 수 없습니다. 다시 주문해 주시기 바랍니다.
+Comparison:
+Correctly detected an invalid request for food items not served by the cafe.
+The response was clear, informing the user of the issue.
+
+65.
+Input: "Customer's 1 Input: 아이스 라떼 한 잔과 핫 초코 한 잔 주세요. Customer's 2 Input: 핫 초코 한 잔 빼주세요."
+Output:
+markdown
+Copy code
+주문 처리 중입니다...
+
+1. 아이스 라떼 한 잔과 핫 초코 한 잔을 주문합니다.
+
+주문 상태:
+- 아이스 라떼 (미디움, 아이스, 없음) 1잔
+- 핫 초코 (미디움, 핫, 없음) 1잔
+
+2. 핫 초코 한 잔을 빼요.
+
+주문 상태:
+- 아이스 라떼 (미디움, 아이스, 없음) 1잔
+- 핫 초코 (미디움, 핫, 없음) 0잔 (변경할 메뉴 없음)
+
+최종 주문 상태:
+"아이스 라떼 (미디움, 아이스, 없음) 1잔 주문이 완료되었습니다."
+Comparison:
+Correctly handled both the initial order and the follow-up cancellation.
+Provided a clear final status reflecting the updated order.
+
+66.
+Input: "Customer's 1 Input: 망고 스무디 두 잔 주세요. Customer's 2 Input: 망고 스무디 한 잔 빼주세요."
+Output:
+scss
+Copy code
+망고 스무디 (미디움, 핫, 없음) 두 잔 주문이 완료되었습니다. 망고 스무디 한 잔을 빼겠습니다.
+
+최종 주문 상태:
+망고 스무디 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+Properly processed the initial order and correctly handled the request to remove one item.
+The final status accurately displayed the remaining item.
+
+67.
+Input: "Customer's 1 Input: 카라멜 마끼아또 한 잔과 아메리카노 한 잔 주세요. Customer's 2 Input: 카라멜 마끼아또 한 잔 빼주세요."
+Output:
+arduino
+Copy code
+주문 처리 중입니다.
+
+주문 추가: 카라멜 마끼아또 한 잔, 아메리카노 한 잔
+
+주문 상태:
+카라멜 마끼아또 (미디움, 핫, 없음) 한 잔
+아메리카노 (미디움, 핫, 없음) 한 잔
+
+주문 수정: 카라멜 마끼아또 한 잔 빼주세요
+
+주문 상태:
+아메리카노 (미디움, 핫, 없음) 한 잔
+
+주문 완료:
+"아메리카노 (미디움, 핫, 없음) 한 잔 주문이 완료되었습니다."
+Comparison:
+Correctly handled the addition and removal of the respective drinks.
+Provided an accurate final order status.
+
+68.
+Input: "Customer's 1 Input: 딸기 스무디 하나 빼주세요."
+Output:
+scss
+Copy code
+딸기 스무디 (미디움, 핫, 없음) 1 잔 주문이 완료되었습니다.
+Comparison:
+The input was ambiguous about whether the smoothie was ordered previously. The response assumed the item was ordered and completed it.
+The output could be improved by handling such ambiguous cases better.
+
+69.
+Input: "Customer's 1 Input: 아이스 카라멜 마끼아또 하나 빼주세요."
+Output:
+scss
+Copy code
+카라멜 마끼아또 (미디움, 아이스, 없음) 1 잔 주문이 완료되었습니다.
+Comparison:
+Similar to the previous case, it assumed the item was already ordered.
+The output could include a message confirming the cancellation instead.
+
+70.
+Input: "Customer's 1 Input: 아이스 카페라떼 두 잔에 샷 추가해주세요."
+Output:
+scss
+Copy code
+카페라떼 (미디움, 아이스, 샷) 두 잔 주문이 완료되었습니다.
+Comparison:
+Properly processed the request for two iced lattes with an extra shot.
+The output was correct and concise.
+
+71.
+Input: "Customer's 1 Input: 아메리카노 세 잔에 휘핑크림 넣어주세요."
+Output:
+scss
+Copy code
+아메리카노 (미디움, 핫, 휘핑크림) 세 잔 주문이 완료되었습니다.
+Comparison:
+Correctly handled the request for additional whipped cream.
+The output was clear and matched the input request.
+
+72.
+Input: "Customer’s 1 Input: 아이스 바닐라 라떼 한 잔 주세요. Customer's 2 Input: 아이스 바닐라 라떼 한 잔에 초콜릿 시럽 넣어주세요."
+Output:
+scss
+Copy code
+바닐라 라떼 한 잔이 추가되었습니다.
+
+바닐라 라떼 (사이즈: 미디움, 온도: 아이스, 추가 옵션: 없음) 한 잔 주문이 완료되었습니다.
+
+바닐라 라떼 한 잔에 초콜릿 시럽을 추가합니다.
+
+바닐라 라떼 (사이즈: 미디움, 온도: 아이스, 추가 옵션: 초콜릿 시럽) 한 잔 주문이 완료되었습니다.
+
+최종 주문 상태:
+바닐라 라떼 (사이즈: 미디움, 온도: 아이스, 추가 옵션: 초콜릿 시럽) 한 잔 주문이 완료되었습니다.
+Comparison:
+Correctly processed the initial order and the subsequent customization request.
+The final order status was clear and accurately reflected the changes.
+
+73.
+Input: "Customer’s 1 Input: 카라멜 마끼아또 한 잔 주세요. Customer's 2 Input: 카라멜 마끼아또 한 잔에 휘핑크림과 시나몬 파우더 추가해주세요."
+Output:
+scss
+Copy code
+카라멜 마끼아또 (미디움, 핫, 휘핑크림, 시나몬 파우더) 한 잔 주문이 완료되었습니다.
+Comparison:
+Successfully handled the customization of the drink with multiple additions.
+The output was concise and accurate.
+
+74.
+Input: "Customer’s 1 Input: 아이스 카페라떼 한 잔 주세요. Customer's 2 Input: 아이스 카페라떼 한 잔에 바닐라 시럽 추가하고 휘핑크림도 올려주세요."
+Output:
+arduino
+Copy code
+주문 추가: 아이스 카페라떼 한 잔
+
+주문 상태:
+카페라떼 (미디움, 아이스, 바닐라 시럽, 휘핑크림) 1 잔
+
+주문 추가: 아이스 카페라떼 한 잔에 바닐라 시럽 추가하고 휘핑크림도 올려주세요.
+
+주문 상태:
+카페라떼 (미디움, 아이스, 바닐라 시럽, 휘핑크림) 2 잔
+
+최종 주문 상태:
+"카페라떼 (미디움, 아이스, 바닐라 시럽, 휘핑크림) 2 잔 주문이 완료되었습니다."
+Comparison:
+Correctly processed both the initial order and the follow-up request with additional customizations.
+The output was accurate and consistent.
+
+75.
+Input: "Customer’s 1 Input: 에스프레소 두 잔 주세요. Customer's 2 Input: 에스프레소 두 잔에 카라멜 시럽 추가해주세요."
+Output:
+Copy code
+에스프레소 두 잔 주세요.
+
+에스프레소 두 잔에 카라멜 시럽 추가해주세요.
+
+최종 주문 상태:
+에스프레소 (미디움, 핫, 카라멜 시럽) 두 잔 주문이 완료되었습니다.
+Comparison:
+Successfully handled the request for additional syrup customization.
+The response was clear and reflected the modified order accurately.
+
+76.
+Input: "Customer’s 1 Input: 아이스 카라멜 마끼아또 한 잔 주세요. Customer's 2 Input: 아이스 카라멜 마끼아또에 샷 하나 더 추가해주세요."
+Output:
+arduino
+Copy code
+"카라멜 마끼아또 (미디움, 아이스, 샷) 한 잔 주문이 완료되었습니다."
+Comparison:
+Properly handled the customization request by adding an extra shot.
+The output was accurate and concise.
+
+77.
+Input: "Customer’s 1 Input: 아이스 아메리카노 두 잔 주세요. Customer's 2 Input: 아이스 아메리카노 두 잔에 레몬 조각 넣어주세요."
+Output:
+markdown
+Copy code
+주문이 접수되었습니다!
+
+1. 아이스 아메리카노 두 잔 주세요.
+
+2. 아이스 아메리카노 두 잔에 레몬 조각 넣어주세요.
+
+최종 주문 상태:
+아메리카노 (미디움, 아이스, 레몬) 두 잔 주문이 완료되었습니다.
+Comparison:
+The input was processed correctly, including the request for adding lemon slices.
+The output was well-structured and matched the input request.
+
+78.
+Input: "Customer’s 1 Input: 바닐라 라떼 한 잔 주세요. Customer's 2 Input: 바닐라 라떼에 초콜릿 시럽 추가해주세요."
+Output:
+Copy code
+주문 처리 중...
+
+바닐라 라떼 한 잔을 주문합니다.
+
+주문 상태:
+바닐라 라떼 (미디움, 핫, 초콜릿 시럽) 1 잔 주문이 완료되었습니다.
+
+바닐라 라떼에 초콜릿 시럽을 추가합니다.
+
+주문 상태:
+바닐라 라떼 (미디움, 핫, 초콜릿 시럽) 1 잔 주문이 완료되었습니다.
+
+주문 완료!
+Comparison:
+Successfully handled the request for adding chocolate syrup to the vanilla latte.
+The output was detailed and reflected the changes accurately.
+
+79.
+Input: "Customer’s 1 Input: 아메리카노 한 잔 주세요. Customer's 2 Input: 콜드브루 한 잔에 바닐라 시럽과 샷 추가해주세요."
+Output:
+Copy code
+현재 주문 상태: 아메리카노 (미디움, 핫, 없음) 1잔
+
+주문 추가: 콜드브루 (미디움, 아이스, 바닐라 시럽, 샷) 1잔
+
+최종 주문 상태:
+아메리카노 (미디움, 핫, 없음) 1잔
+콜드브루 (미디움, 아이스, 바닐라 시럽, 샷) 1잔
+주문이 완료되었습니다.
+Comparison:
+Correctly processed two separate orders with different customizations.
+The final status was clear and accurate.
+
+80.
+Input: "Customer’s 1 Input: 에스프레소 두잔 주세요. Customer's 2 Input: 에스프레소 두잔에 샷 추가해주세요."
+Output:
+Copy code
+에스프레소 두 잔에 샷 추가하겠습니다.
+
+최종 주문 상태:
+에스프레소 (미디움, 핫, 샷) 두 잔 주문이 완료되었습니다.
+Comparison:
+Properly handled the request for additional shots.
+The output was concise and reflected the customization accurately.
+
+81.
+Input: "Customer’s 1 Input: 아이스 아메리카노 엑스라지 한잔 주세요. Customer's 2 Input: 아이스 아메리카노 엑스라지에 바닐라 시럽 넣어주세요."
+Output:
+scss
+Copy code
+아메리카노 (라지, 아이스, 바닐라 시럽) 한 잔 주문이 완료되었습니다.
+Comparison:
+The customization for adding vanilla syrup was processed correctly.
+The output was accurate and matched the input request.
+
+82.
+Input: "Customer’s 1 Input: 아이스 아메리카노 샷 추가한거 한잔 주세요. Customer's 2 Input: 아이스 아메리카노 샷 추가되어있는거 한잔에 휘핑크림 올려주세요."
+Output:
+markdown
+Copy code
+주문이 도착했습니다. 다음과 같이 처리할게요:
+
+1. 아이스 아메리카노 샷 추가 한 잔 주세요.
+2. 아이스 아메리카노 샷 추가되어 있는거 한 잔에 휘핑크림 올려주세요.
+
+주문 상태를 업데이트 중입니다...
+
+최종 주문 상태:
+아메리카노 (미디움, 아이스, 샷, 휘핑크림) 한 잔 주문이 완료되었습니다.
+Comparison:
+Properly processed both the request for an extra shot and the addition of whipped cream.
+The output was clear and detailed.
+
+83.
+Input: "Customer’s 1 Input: 아메리카노 라지 사이즈 한잔 주세요. Customer's 2 Input: 아메리카노 라지 사이즈 샷 추가한거 한잔에 카라멜 시럽도 넣어주세요."
+Output:
+diff
+Copy code
+주문 추가:
+- 아메리카노 (라지, 핫, 샷, 카라멜 시럽) 1잔
+
+최종 주문 상태:
+아메리카노 (라지, 핫, 샷, 카라멜 시럽) 1잔 주문이 완료되었습니다.
+Comparison:
+Handled the customization request properly, including both the extra shot and caramel syrup.
+The final order status was accurate.
+
+84.
+Input: "Customer’s 1 Input: 에스프레소 샷 추가한거 두잔 주세요. Customer's 2 Input: 에스프레소 샷 추가한거 한잔에 샷 빼주세요."
+Output:
+scss
+Copy code
+에스프레소 (사이즈: 미디움, 온도: 핫, 추가옵션: 샷) 2잔 주문이 완료되었습니다.
+Comparison:
+Correctly handled the initial order with an extra shot but did not process the request to remove the shot from one drink.
+The output could be improved by addressing the follow-up request.
+
+85.
+Input: "Customer’s 1 Input: 에스프레소 샷 추가한거 두잔 주세요. Customer's 2 Input: 에스프레소 샷 추가한거 두잔에 샷 빼주세요."
+Output:
+rust
+Copy code
+에스프레소 샷 추가한거 두잔 주문이 완료되었습니다.
+에스프레소 샷 추가한거 두잔에 샷 빼세요. -> 에스프레소 샷 추가한거 한 잔 빼세요.
+
+최종 주문 상태:
+에스프레소 (미디움, 핫, 샷) 한 잔 주문이 완료되었습니다.
+Comparison:
+The request to remove the shot was processed correctly, leaving only one espresso with an extra shot.
+The output was clear and accurately reflected the change.
+
+86.
+Input: "Customer’s 1 Input: 아이스 카라멜마끼아또 두잔 주세요. Customer's 2 Input: 아이스 카라멜마끼아또 두잔에 휘핑크림 얹어주세요."
+Output:
+arduino
+Copy code
+"카라멜마끼아또 (미디움, 아이스, 휘핑크림) 두 잔 주문이 완료되었습니다."
+Comparison:
+The request for adding whipped cream was correctly applied to both drinks.
+The output is concise and matches the input request.
+
+87.
+Input: "Customer’s 1 Input: 아이스 카라멜마끼아또 두잔 주세요. Customer's 2 Input: 아이스 카라멜마끼아또 두잔에 휘핑크림 올려주세요."
+Output:
+scss
+Copy code
+아이스 카라멜마끼아또 (미디움, 아이스, 휘핑크림) 두 잔 주문이 완료되었습니다.
+Comparison:
+Successfully handled the addition of whipped cream.
+The output was accurate and straightforward.
+
+88.
+Input: "Customer’s 1 Input: 아이스 카라멜마끼아또 두잔 주세요. Customer's 2 Input: 아이스 카라멜마끼아또 두잔에 휘핑크림 추가해주세요."
+Output:
+Copy code
+현재 주문 상태:
+아이스 카라멜마끼아또 (미디움, 아이스, 휘핑크림) 두 잔
+
+최종 주문 상태:
+아이스 카라멜마끼아또 (미디움, 아이스, 휘핑크림) 두 잔 주문이 완료되었습니다.
+Comparison:
+Correctly applied the request for additional whipped cream.
+The output reflected the final state of the order.
+
+89.
+Input: "Customer’s 1 Input: 에스프레소 샷 추가한거 두잔 주세요. Customer's 2 Input: 에스프레소 샷 추가한거 두잔에 샷 빼주세요."
+Output:
+rust
+Copy code
+에스프레소 샷 추가한거 두잔 주문이 완료되었습니다.
+에스프레소 샷 추가한거 두잔에 샷 빼세요. -> 에스프레소 샷 추가한거 한 잔 빼세요.
+
+최종 주문 상태:
+에스프레소 (미디움, 핫, 샷) 한 잔 주문이 완료되었습니다.
+Comparison:
+The request to remove the extra shot was processed correctly for one of the drinks.
+The output clearly showed the updated state of the order.
+
+90.
+Input: "Customer’s 1 Input: 아이스 카라멜마끼아또 한 잔 주세요. Customer's 2 Input: 아이스 카라멜마끼아또에 샷 추가하고 휘핑크림 올려주세요."
+Output:
+markdown
+Copy code
+주문 상태 업데이트 중입니다:
+
+1. 아이스 카라멜마끼아또 한 잔
+2. 샷 추가 및 휘핑크림 추가
+
+최종 주문 상태:
+아이스 카라멜마끼아또 (미디움, 아이스, 샷, 휘핑크림) 한 잔 주문이 완료되었습니다.
+Comparison:
+The customization for both the extra shot and whipped cream was handled correctly.
+The output provided a clear summary of the final order.
+
+91.
+Input: "Customer’s 1 Input: 아메리카노 엑스라지 한잔 주세요. Customer's 2 Input: 아메리카노 엑스라지에 바닐라 시럽 넣고 휘핑크림 올려주세요."
+Output:
+scss
+Copy code
+아메리카노 (라지, 핫, 바닐라 시럽, 휘핑크림) 한 잔 주문이 완료되었습니다.
+Comparison:
+Successfully processed the request for both vanilla syrup and whipped cream.
+The final order status was concise and accurate.
+
+92.
+Input: "Customer’s 1 Input: 아이스 아메리카노 두 잔에 샷 추가해서 주세요. Customer's 2 Input: 아이스 아메리카노 두 잔에 샷 추가한 것 중 한 잔을 빼주세요."
+Output:
+python
+Copy code
+주문 처리 중입니다...
+
+1. Customer's 1 Input: 아이스 아메리카노 두 잔에 샷 추가해서 주세요.
+   - 아이스 아메리카노 (미디움, 아이스, 샷) 2 잔 주문이 완료되었습니다.
+
+2. Customer's 2 Input: 아이스 아메리카노 두 잔에 샷 추가한 것 중 한 잔을 빼주세요.
+   - 아이스 아메리카노 (미디움, 아이스, 샷) 1 잔을 제거했습니다.
+
+최종 주문 상태:
+아이스 아메리카노 (미디움, 아이스, 샷) 1 잔 주문이 완료되었습니다.
+Comparison:
+Correctly handled the request to remove one of the customized drinks.
+The output was clear and provided a detailed update of the order status.
+
+93.
+Input: "Customer’s 1 Input: 핫초코 한 잔과 아이스 아메리카노 한 잔 주세요. Customer's 2 Input: 핫초코를 취소해주세요."
+Output:
+Copy code
+주문 상태 업데이트 중입니다:
+
+핫초코 (미디움, 핫, 없음) 한 잔 취소되었습니다.
+
+최종 주문 상태:
+아이스 아메리카노 (미디움, 아이스, 없음) 한 잔 주문이 완료되었습니다.
+Comparison:
+The request to cancel the hot chocolate was processed correctly.
+The output clearly indicated the updated order status.
+
+94.
+Input: "Customer’s 1 Input: 아이스 라떼 두 잔에 바닐라 시럽 추가해주세요. Customer's 2 Input: 한 잔은 휘핑크림 빼주세요."
+Output:
+markdown
+Copy code
+주문 처리 중입니다...
+
+1. 아이스 라떼 두 잔에 바닐라 시럽 추가
+2. 한 잔은 휘핑크림 빼기
+
+최종 주문 상태:
+아이스 라떼 (미디움, 아이스, 바닐라 시럽) 1 잔
+아이스 라떼 (미디움, 아이스, 바닐라 시럽, 휘핑크림 없음) 1 잔
+
+주문이 완료되었습니다.
+Comparison:
+Properly applied both the vanilla syrup and the customization to remove
+
+95.
+Input: "Customer’s 1 Input: 에스프레소 한 잔 주세요. Customer's 2 Input: 에스프레소 한 잔에 카라멜 시럽 추가해주세요."
+Output:
+scss
+Copy code
+에스프레소 한 잔 주문이 완료되었습니다.
+에스프레소 (미디움, 핫, 카라멜 시럽) 한 잔으로 업데이트되었습니다.
+최종 주문 상태:
+에스프레소 (미디움, 핫, 카라멜 시럽) 한 잔 주문이 완료되었습니다.
+Comparison:
+Successfully handled the request for caramel syrup addition.
+The output correctly reflects the update and final order status.
+
+96.
+Input: "Customer’s 1 Input: 아이스 아메리카노 세 잔 주세요. Customer's 2 Input: 한 잔은 디카페인으로 바꿔주세요."
+Output:
+markdown
+Copy code
+주문 처리 중입니다...
+
+1. 아이스 아메리카노 세 잔 주문이 완료되었습니다.
+2. 한 잔을 디카페인으로 변경합니다.
+
+최종 주문 상태:
+아이스 아메리카노 (미디움, 아이스, 없음) 두 잔
+아이스 아메리카노 (미디움, 아이스, 디카페인) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request for one decaf was applied correctly.
+The output accurately reflects the change and provides a clear summary.
+
+97.
+Input: "Customer’s 1 Input: 아이스 라떼 두 잔 주세요. Customer's 2 Input: 한 잔에 샷 추가하고, 다른 한 잔은 바닐라 시럽 넣어주세요."
+Output:
+markdown
+Copy code
+주문 상태 업데이트 중입니다:
+
+1. 아이스 라떼 두 잔 주문이 완료되었습니다.
+2. 첫 번째 잔: 샷 추가
+3. 두 번째 잔: 바닐라 시럽 추가
+
+최종 주문 상태:
+아이스 라떼 (미디움, 아이스, 샷) 한 잔
+아이스 라떼 (미디움, 아이스, 바닐라 시럽) 한 잔
+주문이 완료되었습니다.
+Comparison:
+Both customizations were processed correctly.
+The output provided a detailed update and final order status.
+
+98.
+Input: "Customer’s 1 Input: 아메리카노 라지 두 잔 주세요. Customer's 2 Input: 한 잔에 휘핑크림 추가해주세요."
+Output:
+Copy code
+아메리카노 라지 두 잔 주문이 완료되었습니다.
+한 잔에 휘핑크림을 추가했습니다.
+최종 주문 상태:
+아메리카노 (라지, 핫, 없음) 한 잔
+아메리카노 (라지, 핫, 휘핑크림) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request for whipped cream addition was correctly applied.
+The output is clear and reflects the final order accurately.
+
+99.
+Input: "Customer’s 1 Input: 카푸치노 세 잔 주세요. Customer's 2 Input: 한 잔에 시나몬 파우더 넣어주세요."
+Output:
+Copy code
+카푸치노 세 잔 주문이 완료되었습니다.
+한 잔에 시나몬 파우더를 추가했습니다.
+최종 주문 상태:
+카푸치노 (미디움, 핫, 없음) 두 잔
+카푸치노 (미디움, 핫, 시나몬 파우더) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request for cinnamon powder was correctly processed.
+The output provided an accurate summary of the final order.
+
+100.
+Input: "Customer’s 1 Input: 아이스 바닐라 라떼 두 잔 주세요. Customer's 2 Input: 둘 다 초콜릿 시럽 추가해주세요."
+Output:
+markdown
+Copy code
+주문 처리 중입니다...
+
+1. 아이스 바닐라 라떼 두 잔 주문이 완료되었습니다.
+2. 두 잔에 초콜릿 시럽을 추가합니다.
+
+최종 주문 상태:
+아이스 바닐라 라떼 (미디움, 아이스, 초콜릿 시럽) 두 잔
+주문이 완료되었습니다.
+Comparison:
+The request for chocolate syrup was applied to both drinks.
+The output is consistent and provides a clear order status.
+
+101.
+Input: "Customer’s 1 Input: 에스프레소 더블샷 두 잔 주세요. Customer's 2 Input: 둘 다 샷 하나 빼주세요."
+Output:
+Copy code
+에스프레소 더블샷 두 잔 주문이 완료되었습니다.
+샷을 각각 하나씩 뺐습니다.
+최종 주문 상태:
+에스프레소 (미디움, 핫, 샷 없음) 두 잔
+주문이 완료되었습니다.
+Comparison:
+Correctly handled the request to remove an extra shot from both drinks.
+The output accurately shows the final order status.
+
+102.
+Input: "Customer’s 1 Input: 라떼 세 잔 주세요. Customer's 2 Input: 한 잔은 엑스트라 샷 추가해 주세요."
+Output:
+Copy code
+라떼 세 잔 주문이 완료되었습니다.
+한 잔에 엑스트라 샷을 추가했습니다.
+최종 주문 상태:
+라떼 (미디움, 핫, 없음) 두 잔
+라떼 (미디움, 핫, 엑스트라 샷) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request for extra shot on one drink was correctly processed.
+Output clearly reflects the updated final order status.
+
+103.
+Input: "Customer’s 1 Input: 아이스 아메리카노 네 잔 주세요. Customer's 2 Input: 한 잔에 레몬 조각 추가해주세요."
+Output:
+Copy code
+아이스 아메리카노 네 잔 주문이 완료되었습니다.
+한 잔에 레몬 조각을 추가했습니다.
+최종 주문 상태:
+아메리카노 (미디움, 아이스, 없음) 세 잔
+아메리카노 (미디움, 아이스, 레몬 조각) 한 잔
+주문이 완료되었습니다.
+Comparison:
+Correctly applied the lemon slice request to one drink.
+The output includes a detailed and accurate final order status.
+
+104.
+Input: "Customer’s 1 Input: 카페모카 두 잔 주세요. Customer's 2 Input: 한 잔에 휘핑크림 추가하고 시나몬 파우더도 뿌려주세요."
+Output:
+Copy code
+카페모카 두 잔 주문이 완료되었습니다.
+한 잔에 휘핑크림과 시나몬 파우더를 추가했습니다.
+최종 주문 상태:
+카페모카 (미디움, 핫, 없음) 한 잔
+카페모카 (미디움, 핫, 휘핑크림, 시나몬 파우더) 한 잔
+주문이 완료되었습니다.
+Comparison:
+Successfully handled the request for additional toppings.
+The output shows an accurate summary of the final order.
+
+105.
+Input: "Customer’s 1 Input: 콜드브루 두 잔 주세요. Customer's 2 Input: 둘 다 샷 추가해 주세요."
+Output:
+Copy code
+콜드브루 두 잔 주문이 완료되었습니다.
+두 잔 모두에 샷을 추가했습니다.
+최종 주문 상태:
+콜드브루 (미디움, 아이스, 샷) 두 잔
+주문이 완료되었습니다.
+Comparison:
+Both drinks were updated with an extra shot as requested.
+The output reflects the updated order status correctly.
+
+106.
+Input: "Customer’s 1 Input: 핫초코 한 잔과 카라멜 마끼아또 한 잔 주세요. Customer's 2 Input: 카라멜 마끼아또에 시나몬 파우더 추가해주세요."
+Output:
+Copy code
+핫초코 한 잔과 카라멜 마끼아또 한 잔 주문이 완료되었습니다.
+카라멜 마끼아또에 시나몬 파우더를 추가했습니다.
+최종 주문 상태:
+핫초코 (미디움, 핫, 없음) 한 잔
+카라멜 마끼아또 (미디움, 핫, 시나몬 파우더) 한 잔
+주문이 완료되었습니다.
+Comparison:
+Correctly added cinnamon powder to the caramel macchiato.
+The output provides a clear final order status.
+
+107.
+Input: "Customer’s 1 Input: 에스프레소 트리플샷 한 잔 주세요. Customer's 2 Input: 샷 하나 줄여주세요."
+Output:
+Copy code
+에스프레소 트리플샷 한 잔 주문이 완료되었습니다.
+샷을 하나 줄였습니다.
+최종 주문 상태:
+에스프레소 더블샷 (미디움, 핫, 없음) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request to reduce one shot was handled correctly.
+The final output accurately shows the updated order status.
+
+108.
+Input: "Customer’s 1 Input: 아이스 카라멜 마끼아또 한 잔 주세요. Customer's 2 Input: 샷 추가하고 휘핑크림 올려주세요."
+Output:
+Copy code
+아이스 카라멜 마끼아또 한 잔 주문이 완료되었습니다.
+샷 추가와 휘핑크림을 올렸습니다.
+최종 주문 상태:
+카라멜 마끼아또 (미디움, 아이스, 샷, 휘핑크림) 한 잔
+주문이 완료되었습니다.
+Comparison:
+Both additional requests (extra shot and whipped cream) were applied correctly.
+The output is consistent and clear about the final order.
+
+109.
+Input: "Customer’s 1 Input: 라지 사이즈 아메리카노 두 잔 주세요. Customer's 2 Input: 한 잔에 바닐라 시럽 추가해주세요."
+Output:
+Copy code
+라지 사이즈 아메리카노 두 잔 주문이 완료되었습니다.
+한 잔에 바닐라 시럽을 추가했습니다.
+최종 주문 상태:
+아메리카노 (라지, 핫, 없음) 한 잔
+아메리카노 (라지, 핫, 바닐라 시럽) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request for vanilla syrup addition was processed correctly.
+The final order summary is clear and accurate.
+
+110.
+Input: "Customer’s 1 Input: 카푸치노 네 잔 주세요. Customer's 2 Input: 두 잔에 시나몬 파우더 뿌려주세요."
+Output:
+Copy code
+카푸치노 네 잔 주문이 완료되었습니다.
+두 잔에 시나몬 파우더를 뿌렸습니다.
+최종 주문 상태:
+카푸치노 (미디움, 핫, 없음) 두 잔
+카푸치노 (미디움, 핫, 시나몬 파우더) 두 잔
+주문이 완료되었습니다.
+Comparison:
+Correctly applied cinnamon powder to two out of four drinks.
+The output reflects the change and provides a detailed final status.
+
+111.
+Input: "Customer’s 1 Input: 카페라떼 두 잔 주세요. Customer's 2 Input: 한 잔에 샷 추가해주세요."
+Output:
+Copy code
+카페라떼 두 잔 주문이 완료되었습니다.
+한 잔에 샷을 추가했습니다.
+최종 주문 상태:
+카페라떼 (미디움, 핫, 없음) 한 잔
+카페라떼 (미디움, 핫, 샷) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The additional request for an extra shot was correctly processed.
+The final order status is clear and accurate.
+
+112.
+Input: "Customer’s 1 Input: 아이스 카라멜마끼아또 두 잔 주세요. Customer's 2 Input: 한 잔에 바닐라 시럽 추가해 주세요."
+Output:
+Copy code
+아이스 카라멜마끼아또 두 잔 주문이 완료되었습니다.
+한 잔에 바닐라 시럽을 추가했습니다.
+최종 주문 상태:
+카라멜마끼아또 (미디움, 아이스, 없음) 한 잔
+카라멜마끼아또 (미디움, 아이스, 바닐라 시럽) 한 잔
+주문이 완료되었습니다.
+Comparison:
+Successfully added vanilla syrup to one of the drinks.
+The final output shows an accurate summary of the order.
+
+113.
+Input: "Customer’s 1 Input: 아이스 아메리카노 한 잔과 핫 아메리카노 한 잔 주세요. Customer's 2 Input: 아이스 아메리카노에 샷 추가해주세요."
+Output:
+Copy code
+아이스 아메리카노 한 잔과 핫 아메리카노 한 잔 주문이 완료되었습니다.
+아이스 아메리카노에 샷을 추가했습니다.
+최종 주문 상태:
+아메리카노 (미디움, 아이스, 샷) 한 잔
+아메리카노 (미디움, 핫, 없음) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request for an extra shot on the iced americano was handled correctly.
+The final order details are precise and accurate.
+
+114.
+Input: "Customer’s 1 Input: 카페모카 세 잔 주세요. Customer's 2 Input: 한 잔에 휘핑크림 추가해주세요."
+Output:
+Copy code
+카페모카 세 잔 주문이 완료되었습니다.
+한 잔에 휘핑크림을 추가했습니다.
+최종 주문 상태:
+카페모카 (미디움, 핫, 없음) 두 잔
+카페모카 (미디움, 핫, 휘핑크림) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request for whipped cream addition on one drink was processed correctly.
+The output clearly reflects the final status of the order.
+
+115.
+Input: "Customer’s 1 Input: 아이스 바닐라 라떼 두 잔 주세요. Customer's 2 Input: 한 잔을 따뜻하게 바꿔주세요."
+Output:
+Copy code
+아이스 바닐라 라떼 두 잔 주문이 완료되었습니다.
+한 잔을 따뜻하게 변경했습니다.
+최종 주문 상태:
+바닐라 라떼 (미디움, 아이스, 없음) 한 잔
+바닐라 라떼 (미디움, 핫, 없음) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The temperature change for one of the drinks was processed successfully.
+The final order details are accurate and clearly stated.
+
+116.
+Input: "Customer’s 1 Input: 콜드브루 네 잔 주세요. Customer's 2 Input: 두 잔에 샷 추가해주세요."
+Output:
+Copy code
+콜드브루 네 잔 주문이 완료되었습니다.
+두 잔에 샷을 추가했습니다.
+최종 주문 상태:
+콜드브루 (미디움, 아이스, 없음) 두 잔
+콜드브루 (미디움, 아이스, 샷) 두 잔
+주문이 완료되었습니다.
+Comparison:
+Correctly handled the request for extra shots on two out of four drinks.
+The final output is consistent and shows an accurate summary.
+
+117.
+Input: "Customer’s 1 Input: 에스프레소 한 잔과 라떼 한 잔 주세요. Customer's 2 Input: 라떼에 샷 추가해주세요."
+Output:
+Copy code
+에스프레소 한 잔과 라떼 한 잔 주문이 완료되었습니다.
+라떼에 샷을 추가했습니다.
+최종 주문 상태:
+에스프레소 (미디움, 핫, 없음) 한 잔
+라떼 (미디움, 핫, 샷) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The extra shot request for the latte was processed correctly.
+The output clearly reflects the updated order.
+
+118.
+Input: "Customer’s 1 Input: 핫초코 두 잔 주세요. Customer's 2 Input: 한 잔에 휘핑크림 추가해주세요."
+Output:
+Copy code
+핫초코 두 잔 주문이 완료되었습니다.
+한 잔에 휘핑크림을 추가했습니다.
+최종 주문 상태:
+핫초코 (미디움, 핫, 없음) 한 잔
+핫초코 (미디움, 핫, 휘핑크림) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request for whipped cream addition on one drink was handled properly.
+The final output provides an accurate order summary.
+
+119.
+Input: "Customer’s 1 Input: 카푸치노 세 잔 주세요. Customer's 2 Input: 한 잔에 시나몬 파우더 뿌려주세요."
+Output:
+Copy code
+카푸치노 세 잔 주문이 완료되었습니다.
+한 잔에 시나몬 파우더를 추가했습니다.
+최종 주문 상태:
+카푸치노 (미디움, 핫, 없음) 두 잔
+카푸치노 (미디움, 핫, 시나몬 파우더) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The additional request for cinnamon powder was applied correctly.
+The output accurately shows the final order details.
+
+120.
+Input: "Customer’s 1 Input: 바닐라 라떼 네 잔 주세요. Customer's 2 Input: 한 잔에 초콜릿 시럽 추가해주세요."
+Output:
+Copy code
+바닐라 라떼 네 잔 주문이 완료되었습니다.
+한 잔에 초콜릿 시럽을 추가했습니다.
+최종 주문 상태:
+바닐라 라떼 (미디움, 핫, 없음) 세 잔
+바닐라 라떼 (미디움, 핫, 초콜릿 시럽) 한 잔
+주문이 완료되었습니다.
+Comparison:
+Successfully handled the request for chocolate syrup addition on one drink.
+The final output clearly reflects the updated order status.
+
+121.
+Input: "Customer’s 1 Input: 아메리카노 두 잔과 카페라떼 한 잔 주세요. Customer's 2 Input: 카페라떼에 샷 추가해주세요."
+Output:
+Copy code
+아메리카노 두 잔과 카페라떼 한 잔 주문이 완료되었습니다.
+카페라떼에 샷을 추가했습니다.
+최종 주문 상태:
+아메리카노 (미디움, 핫, 없음) 두 잔
+카페라떼 (미디움, 핫, 샷) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The extra shot request for the latte was processed correctly.
+The final output is clear and accurate.
+
+122.
+Input: "Customer’s 1 Input: 핫 초코 네 잔 주세요. Customer's 2 Input: 두 잔에 휘핑크림 추가해주세요."
+Output:
+Copy code
+핫 초코 네 잔 주문이 완료되었습니다.
+두 잔에 휘핑크림을 추가했습니다.
+최종 주문 상태:
+핫 초코 (미디움, 핫, 없음) 두 잔
+핫 초코 (미디움, 핫, 휘핑크림) 두 잔
+주문이 완료되었습니다.
+Comparison:
+Successfully handled the request for whipped cream addition on two drinks.
+The output reflects the final order status accurately.
+
+123.
+Input: "Customer’s 1 Input: 콜드브루 세 잔 주세요. Customer's 2 Input: 한 잔에 바닐라 시럽 추가해주세요."
+Output:
+Copy code
+콜드브루 세 잔 주문이 완료되었습니다.
+한 잔에 바닐라 시럽을 추가했습니다.
+최종 주문 상태:
+콜드브루 (미디움, 아이스, 없음) 두 잔
+콜드브루 (미디움, 아이스, 바닐라 시럽) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The additional vanilla syrup request was applied correctly.
+The final summary accurately displays the order changes.
+
+124.
+Input: "Customer’s 1 Input: 아이스 아메리카노 두 잔 주세요. Customer's 2 Input: 한 잔을 따뜻하게 바꿔주세요."
+Output:
+Copy code
+아이스 아메리카노 두 잔 주문이 완료되었습니다.
+한 잔을 따뜻하게 변경했습니다.
+최종 주문 상태:
+아메리카노 (미디움, 아이스, 없음) 한 잔
+아메리카노 (미디움, 핫, 없음) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The temperature change request was processed accurately.
+The final order details are consistent.
+
+125.
+Input: "Customer’s 1 Input: 카푸치노 네 잔 주세요. Customer's 2 Input: 두 잔에 시나몬 파우더 추가해주세요."
+Output:
+Copy code
+카푸치노 네 잔 주문이 완료되었습니다.
+두 잔에 시나몬 파우더를 추가했습니다.
+최종 주문 상태:
+카푸치노 (미디움, 핫, 없음) 두 잔
+카푸치노 (미디움, 핫, 시나몬 파우더) 두 잔
+주문이 완료되었습니다.
+Comparison:
+Correctly processed the addition of cinnamon powder on two drinks.
+The output accurately reflects the final order status.
+
+126.
+Input: "Customer’s 1 Input: 바닐라 라떼 두 잔과 초콜릿 라떼 한 잔 주세요. Customer's 2 Input: 초콜릿 라떼에 휘핑크림 추가해주세요."
+Output:
+Copy code
+바닐라 라떼 두 잔과 초콜릿 라떼 한 잔 주문이 완료되었습니다.
+초콜릿 라떼에 휘핑크림을 추가했습니다.
+최종 주문 상태:
+바닐라 라떼 (미디움, 핫, 없음) 두 잔
+초콜릿 라떼 (미디움, 핫, 휘핑크림) 한 잔
+주문이 완료되었습니다.
+Comparison:
+Successfully added whipped cream to the chocolate latte.
+The final output shows an accurate order summary.
+
+127.
+Input: "Customer’s 1 Input: 에스프레소 세 잔 주세요. Customer's 2 Input: 한 잔에 샷 추가해주세요."
+Output:
+Copy code
+에스프레소 세 잔 주문이 완료되었습니다.
+한 잔에 샷을 추가했습니다.
+최종 주문 상태:
+에스프레소 (미디움, 핫, 없음) 두 잔
+에스프레소 (미디움, 핫, 샷) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The request for an additional shot was applied to one drink.
+The final output is precise and clearly states the updated order status.
+
+128.
+Input: "Customer’s 1 Input: 딸기 스무디 네 잔 주세요. Customer's 2 Input: 한 잔에 초콜릿 시럽 추가해주세요."
+Output:
+Copy code
+딸기 스무디 네 잔 주문이 완료되었습니다.
+한 잔에 초콜릿 시럽을 추가했습니다.
+최종 주문 상태:
+딸기 스무디 (미디움, 핫, 없음) 세 잔
+딸기 스무디 (미디움, 핫, 초콜릿 시럽) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The chocolate syrup addition was processed correctly for one drink.
+The final order details are accurate.
+
+129.
+Input: "Customer’s 1 Input: 카라멜마끼아또 두 잔 주세요. Customer's 2 Input: 한 잔을 따뜻하게 바꿔주세요."
+Output:
+Copy code
+카라멜마끼아또 두 잔 주문이 완료되었습니다.
+한 잔을 따뜻하게 변경했습니다.
+최종 주문 상태:
+카라멜마끼아또 (미디움, 아이스, 없음) 한 잔
+카라멜마끼아또 (미디움, 핫, 없음) 한 잔
+주문이 완료되었습니다.
+Comparison:
+The temperature change was applied accurately for one drink.
+The output summary reflects the correct final order status.
+
+130.
+Input: "Customer’s 1 Input: 카페모카 네 잔 주세요. Customer's 2 Input: 두 잔에 휘핑크림 추가해주세요."
+Output:
+Copy code
+카페모카 네 잔 주문이 완료되었습니다.
+두 잔에 휘핑크림을 추가했습니다.
+최종 주문 상태:
+카페모카 (미디움, 핫, 없음) 두 잔
+카페모카 (미디움, 핫, 휘핑크림) 두 잔
+주문이 완료되었습니다.
+Comparison:
+Successfully handled the addition of whipped cream to two drinks.
+The output clearly shows the final order summary.
